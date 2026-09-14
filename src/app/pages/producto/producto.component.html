@@ -1,0 +1,114 @@
+<div class="seccion seccion--clara seccion-detalle-producto" *ngIf="producto">
+  <div class="contenedor">
+    
+    <!-- Navegación de migas de pan / Volver -->
+    <nav class="producto-migas" appReveal="fade-down" [revealDuration]="500">
+      <a routerLink="/catalogo" class="producto-migas__enlace">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Volver al catálogo</span>
+      </a>
+      <span class="producto-migas__separador">/</span>
+      <span class="producto-migas__actual">{{ producto.nombre }}</span>
+    </nav>
+
+    <!-- Tarjeta Principal del Producto -->
+    <div class="tarjeta-detalle" appReveal="fade-up" [revealDuration]="700">
+      
+      <!-- COLUMNA IZQUIERDA: Imagen y Pastillas Informativas -->
+      <div class="tarjeta-detalle__col-visual">
+        <div class="producto-visual-caja">
+          <img [src]="producto.imagenes[0]" 
+               [alt]="producto.nombre" 
+               class="producto-visual-caja__img" />
+        </div>
+
+        <!-- Pastillas informativas inferiores -->
+        <div class="producto-pastillas">
+          <div class="producto-pastilla producto-pastilla--morada" *ngIf="producto.principioActivo">
+            {{ producto.principioActivo }}
+          </div>
+          <div class="producto-pastilla producto-pastilla--naranja" *ngIf="producto.contenido">
+            <span class="producto-pastilla__cant">{{ producto.formaFarmaceutica }}</span>
+            <span class="producto-pastilla__sub">{{ producto.presentacion }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: Información, Descripción y Contenido -->
+      <div class="tarjeta-detalle__col-info">
+        
+        <!-- Laboratorio / Fabricante -->
+        <span class="producto-laboratorio">{{ producto.laboratorio || 'PRANALAB LABORATORIOS CHILE' }}</span>
+
+        <!-- Título del Producto -->
+        <h1 class="producto-titulo">{{ producto.nombre }}</h1>
+
+        <!-- BLOQUE DE INFORMACIÓN: DESCRIPCIÓN Y CONTENIDO -->
+        <div class="producto-ficha-info">
+          
+          <!-- Descripción del producto -->
+          <div class="producto-ficha-info__seccion">
+            <h2 class="producto-ficha-info__titulo">Descripción del producto</h2>
+            <div class="producto-ficha-info__texto">
+              @if (producto.descripcionParrafos && producto.descripcionParrafos.length > 0) {
+                @for (parrafo of producto.descripcionParrafos; track $index) {
+                  <p>{{ parrafo }}</p>
+                }
+              } @else {
+                <p>{{ producto.descripcionCorta }}</p>
+              }
+            </div>
+          </div>
+
+          <!-- Contenido y Modo de Uso -->
+          <div class="producto-ficha-info__seccion">
+            <h2 class="producto-ficha-info__titulo">Contenido & Modo de Uso</h2>
+            <div class="producto-especificaciones">
+              
+              <div class="producto-especificacion" *ngIf="producto.contenido">
+                <span class="producto-especificacion__label">Contenido:</span>
+                <span class="producto-especificacion__valor">{{ producto.contenido }}</span>
+              </div>
+
+              <div class="producto-especificacion" *ngIf="producto.modoUso">
+                <span class="producto-especificacion__label">Modo de uso / Posología:</span>
+                <span class="producto-especificacion__valor">{{ producto.modoUso }}</span>
+              </div>
+
+              <div class="producto-especificacion" *ngIf="producto.composicion">
+                <span class="producto-especificacion__label">Composición:</span>
+                <span class="producto-especificacion__valor">{{ producto.composicion }}</span>
+              </div>
+
+              <div class="producto-especificacion" *ngIf="producto.clasificacion">
+                <span class="producto-especificacion__label">Condición de venta:</span>
+                <span class="producto-especificacion__valor">
+                  {{ producto.clasificacion === 'venta-directa' ? 'Venta Directa (Sin Receta Médica)' : 'Bajo Receta Médica' }}
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Botón de contacto para farmacias -->
+          <div class="producto-acciones">
+            <a routerLink="/contacto" class="boton boton--primario">
+              <span>Solicitar Información Comercial</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

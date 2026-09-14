@@ -1,0 +1,365 @@
+.pie-pagina {
+  background-color: var(--color-verde-profundo);
+  color: #e5ede8;
+  position: relative;
+  overflow: hidden;
+  border-top: 5px solid var(--color-verde-salvia);
+  width: 100%;
+
+  /* ==========================================================================
+     CUERPO PRINCIPAL (4 COLUMNAS EXTENDIDAS Y GRANDES)
+     ========================================================================== */
+  &__contenedor {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 5.5rem 2.5rem 5rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1100px) {
+      grid-template-columns: 1.55fr 1.05fr 1.35fr 1.35fr;
+      gap: 4rem;
+    }
+  }
+
+  &__columna {
+    display: flex;
+    flex-direction: column;
+
+    &--marca {
+      align-items: flex-start;
+    }
+  }
+
+  /* Logo Footer a la esquina */
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    margin-bottom: 1.75rem;
+    align-self: flex-start;
+    transition: var(--transicion-base);
+
+    &:hover {
+      opacity: 0.95;
+      transform: translateY(-3px) scale(1.02);
+    }
+  }
+
+  &__descripcion {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: #c2d6ca;
+    margin-bottom: 2rem;
+    max-width: 440px;
+  }
+
+  &__titulo {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: var(--color-blanco);
+    letter-spacing: 0.08em;
+    margin-bottom: 1.75rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 38px;
+      height: 3.5px;
+      background-color: #65b32e;
+      border-radius: 2px;
+    }
+  }
+
+  /* Lista de Enlaces */
+  &__lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  &__enlace {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #d1e2d7;
+    transition: var(--transicion-base);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    .pie-bullet {
+      font-size: 0.75rem;
+      color: #65b32e;
+      transition: transform var(--transicion-base);
+    }
+
+    &:hover {
+      color: var(--color-blanco);
+      transform: translateX(6px);
+
+      .pie-bullet {
+        color: var(--color-acento);
+        transform: scale(1.35);
+      }
+    }
+  }
+
+  /* Tarjetas de Líneas Terapéuticas */
+  &__lineas {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Lista de Contacto */
+  &__contacto-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  &__contacto-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.95rem;
+    font-size: 0.98rem;
+    color: #d1e2d7;
+    line-height: 1.5;
+
+    .icono {
+      flex-shrink: 0;
+      color: #65b32e;
+      margin-top: 3px;
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  /* Redes Sociales */
+  &__redes {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: auto;
+  }
+
+  /* ==========================================================================
+     BARRA INFERIOR DE COPYRIGHT
+     ========================================================================== */
+  &__inferior {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 1.6rem 0;
+    background-color: #0b6b3a;
+
+    &-contenedor {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+      font-size: 0.95rem;
+      color: #e2ede5;
+      text-align: center;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+        text-align: left;
+      }
+    }
+
+    &-red {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__copyright strong {
+    color: var(--color-blanco);
+  }
+}
+
+/* Logo en caja blanca en la esquina */
+.pie-logo-caja {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform var(--transicion-base);
+}
+
+.pie-logo-img {
+  height: 72px;
+  width: auto;
+  max-width: 250px;
+  object-fit: contain;
+}
+
+/* Botones de Redes Sociales */
+.pie-red-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-blanco);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transicion-suave);
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background-color: var(--color-verde-salvia);
+    color: var(--color-blanco);
+    transform: translateY(-4px) scale(1.1);
+    border-color: var(--color-verde-salvia);
+    box-shadow: 0 6px 16px rgba(74, 124, 89, 0.45);
+  }
+
+  &--whatsapp {
+    &:hover {
+      background-color: #25d366;
+      border-color: #25d366;
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45);
+    }
+  }
+}
+
+/* Tarjetas miniatura para líneas de productos */
+.pie-linea-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0.85rem 1.15rem;
+  transition: var(--transicion-suave);
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: #65b32e;
+    transform: translateX(5px);
+
+    .pie-linea-card__nombre {
+      color: var(--color-blanco);
+    }
+  }
+
+  &__icono {
+    font-size: 1.65rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  &__nombre {
+    font-size: 0.94rem;
+    font-weight: 700;
+    color: #e2ede5;
+    transition: color var(--transicion-base);
+  }
+
+  &__sub {
+    font-size: 0.8rem;
+    color: #a4beae;
+  }
+}
+
+/* Sello de Certificación de Calidad */
+.pie-sello-certificacion {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(101, 179, 46, 0.45);
+  border-radius: 14px;
+  padding: 1.15rem 1.35rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: var(--transicion-suave);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: #65b32e;
+    transform: translateY(-3px);
+  }
+
+  .pie-sello-icono {
+    color: #65b32e;
+    flex-shrink: 0;
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .pie-sello-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .pie-sello-titulo {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-blanco);
+    letter-spacing: 0.06em;
+  }
+
+  .pie-sello-desc {
+    font-size: 0.82rem;
+    color: #a4beae;
+    line-height: 1.35;
+  }
+}
+
+.pie-inferior-red-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.18);
+  color: var(--color-blanco);
+  transition: var(--transicion-base);
+
+  &:hover {
+    background-color: var(--color-blanco);
+    color: #0b6b3a;
+    transform: scale(1.1);
+  }
+}

@@ -1,0 +1,68 @@
+<article class="tarjeta tarjeta-producto">
+  <!-- Cabecera de la Tarjeta con Badges -->
+  <div class="tarjeta-producto__badges">
+    <div class="tarjeta-producto__badges-grupo">
+      @if (producto.nuevo) {
+        <app-badge tipo="nuevo"></app-badge>
+      }
+      @if (producto.destacado) {
+        <app-badge tipo="destacado"></app-badge>
+      }
+    </div>
+    <app-badge [tipo]="producto.clasificacion"></app-badge>
+  </div>
+
+  <!-- Imagen / Visual del Producto -->
+  <div class="tarjeta-producto__visual">
+    @if (producto.imagenes && producto.imagenes.length > 0 && producto.imagenes[0]) {
+      <img [src]="producto.imagenes[0]" [alt]="producto.nombre" class="tarjeta-producto__img" />
+    } @else {
+      <div class="tarjeta-producto__icono-caja">
+        <svg class="tarjeta-producto__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path>
+          <path d="m8.5 8.5 7 7"></path>
+        </svg>
+      </div>
+      <span class="tarjeta-producto__forma">{{ producto.formaFarmaceutica }}</span>
+    }
+  </div>
+
+  <!-- Contenido de la Tarjeta -->
+  <div class="tarjeta-producto__cuerpo">
+    <div class="tarjeta-producto__meta">
+      <span class="tarjeta-producto__categoria">{{ producto.categoria }}</span>
+      @if (producto.principioActivo) {
+        <span class="tarjeta-producto__principio">{{ producto.principioActivo }}</span>
+      }
+    </div>
+
+    <h3 class="tarjeta-producto__nombre">
+      <a [routerLink]="['/catalogo', producto.slug]">{{ producto.nombre }}</a>
+    </h3>
+
+    <p class="tarjeta-producto__descripcion">{{ producto.descripcionCorta }}</p>
+
+    <!-- Datos Técnicos / Especificaciones -->
+    <div class="tarjeta-producto__datos-tecnicos">
+      <div class="dato-tecnico" *ngIf="producto.presentacion">
+        <span class="dato-tecnico__etiqueta">Presentación</span>
+        <span class="dato-tecnico__valor">{{ producto.presentacion }}</span>
+      </div>
+      <div class="dato-tecnico" *ngIf="producto.contenido">
+        <span class="dato-tecnico__etiqueta">Contenido</span>
+        <span class="dato-tecnico__valor">{{ producto.contenido }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie de la Tarjeta con Enlace de Acción -->
+  <div class="tarjeta-producto__pie">
+    <a [routerLink]="['/catalogo', producto.slug]" class="boton boton--primario tarjeta-producto__boton">
+      <span>Ver Ficha Técnica</span>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+  </div>
+</article>

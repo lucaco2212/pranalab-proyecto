@@ -1,0 +1,238 @@
+.seccion-detalle-producto {
+  padding: 3rem 0 5.5rem 0;
+}
+
+.producto-migas {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  color: var(--color-gris-texto);
+
+  &__enlace {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-verde-salvia);
+    font-weight: 600;
+    transition: var(--transicion-base);
+
+    &:hover {
+      color: var(--color-verde-profundo);
+      transform: translateX(-3px);
+    }
+  }
+
+  &__separador {
+    color: #b0bec5;
+  }
+
+  &__actual {
+    font-weight: 500;
+    color: var(--color-texto);
+    max-width: 450px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Tarjeta Principal de Detalle */
+.tarjeta-detalle {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 3.5rem;
+  background-color: var(--color-blanco);
+  border-radius: 18px;
+  border: 1px solid var(--color-gris-borde);
+  box-shadow: 0 6px 24px var(--color-sombra-suave);
+  padding: 3.25rem;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.75rem;
+  }
+}
+
+/* COLUMNA VISUAL (IZQUIERDA) */
+.tarjeta-detalle__col-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.producto-visual-caja {
+  position: relative;
+  background: radial-gradient(circle at center, #ffffff 0%, #f4f8f5 100%);
+  border-radius: 16px;
+  border: 1px solid #ebf0ec;
+  padding: 2.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02);
+
+  &__img {
+    max-height: 360px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.08));
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+}
+
+/* Pastillas informativas inferiores */
+.producto-pastillas {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0.75rem;
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.producto-pastilla {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.95rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: var(--transicion-base);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &--morada {
+    background-color: #833979;
+    color: #ffffff;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+
+  &--naranja {
+    background-color: #f38201;
+    color: #ffffff;
+
+    .producto-pastilla__cant {
+      font-size: 1.25rem;
+      line-height: 1.1;
+    }
+
+    .producto-pastilla__sub {
+      font-size: 0.8rem;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+  }
+}
+
+/* COLUMNA INFORMACIÓN (DERECHA) */
+.tarjeta-detalle__col-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.producto-laboratorio {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #78909c;
+  margin-bottom: 0.5rem;
+}
+
+.producto-titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0b6b3a;
+  line-height: 1.25;
+  margin-bottom: 1.75rem;
+}
+
+/* Ficha Técnica: Descripción y Contenido */
+.producto-ficha-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-top: 1px solid var(--color-gris-borde);
+  padding-top: 1.75rem;
+
+  &__seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__titulo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-verde-profundo);
+    margin-bottom: 0.25rem;
+  }
+
+  &__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    color: #3f4e44;
+    font-size: 1rem;
+    line-height: 1.7;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.producto-especificaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: #f7faf8;
+  border-radius: 12px;
+  padding: 1.6rem;
+  border: 1px solid #e2ece5;
+}
+
+.producto-especificacion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+
+  &__label {
+    font-weight: 700;
+    color: var(--color-verde-profundo);
+    min-width: 200px;
+  }
+
+  &__valor {
+    color: #2d3748;
+    font-weight: 500;
+  }
+}
+
+.producto-acciones {
+  margin-top: 0.75rem;
+
+  .boton {
+    padding: 0.95rem 2.25rem;
+    font-size: 1rem;
+  }
+}

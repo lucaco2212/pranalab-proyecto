@@ -1,0 +1,209 @@
+.tarjeta-producto {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem;
+  background-color: var(--color-blanco);
+  border-radius: var(--radio-borde);
+  border: 1px solid var(--color-gris-borde);
+  box-shadow: 0 4px 14px var(--color-sombra-suave);
+  transition: var(--transicion-suave);
+  position: relative;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px var(--color-sombra-firme);
+    border-color: rgba(74, 124, 89, 0.45);
+
+    .tarjeta-producto__img {
+      transform: scale(1.06);
+    }
+
+    .tarjeta-producto__boton {
+      background-color: var(--color-verde-profundo);
+      box-shadow: 0 6px 16px rgba(47, 74, 62, 0.35);
+
+      svg {
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  &__badges {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 1.15rem;
+    flex-wrap: wrap;
+
+    &-grupo {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__badge-dcto {
+    background-color: #ff6a00;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+  }
+
+  &__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #ffffff 0%, #f4f8f5 100%);
+    border: 1px solid #edf2ee;
+    padding: 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+    min-height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__img {
+    max-height: 175px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.06));
+  }
+
+  &__icono-caja {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: var(--color-blanco);
+    border-radius: 10px;
+    color: var(--color-verde-salvia);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+    flex-shrink: 0;
+
+    .tarjeta-producto__icono {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__forma {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-verde-profundo);
+  }
+
+  &__cuerpo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.45rem;
+  }
+
+  &__categoria {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-acento);
+  }
+
+  &__principio {
+    font-size: 0.72rem;
+    font-weight: 700;
+    background-color: #833979;
+    color: #ffffff;
+    padding: 0.18rem 0.55rem;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  &__nombre {
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.65rem;
+
+    a {
+      color: #0b6b3a;
+      transition: color var(--transicion-base);
+
+      &:hover {
+        color: var(--color-verde-salvia);
+      }
+    }
+  }
+
+  &__precios {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.35rem;
+  }
+
+  &__precio-normal {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-decoration: line-through;
+  }
+
+  &__precio-oferta {
+    font-size: 1.4rem;
+    font-weight: 800;
+    font-family: var(--font-display);
+    color: #e58a00;
+  }
+
+  &__pum {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #4b5563;
+    background-color: #fef3c7;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    display: inline-block;
+  }
+
+  &__descripcion {
+    font-size: 0.88rem;
+    color: var(--color-gris-texto);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+  }
+
+  &__datos-tecnicos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: auto;
+    margin-bottom: 1.35rem;
+  }
+
+  &__pie {
+    margin-top: auto;
+  }
+
+  &__boton {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    justify-content: center;
+    background-color: #65b32e;
+    border-color: #65b32e;
+    box-shadow: 0 4px 10px rgba(101, 179, 46, 0.25);
+  }
+}
