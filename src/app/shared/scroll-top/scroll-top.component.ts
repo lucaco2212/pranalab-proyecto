@@ -43,6 +43,13 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
                   transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
                   visibility 0.35s,
                   background-color 0.2s;
+
+      @media (max-width: 600px) {
+        bottom: 1.25rem;
+        right: 1.25rem;
+        width: 40px;
+        height: 40px;
+      }
     }
 
     .scroll-top-btn:hover {

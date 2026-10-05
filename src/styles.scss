@@ -23,7 +23,7 @@
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Dimensiones y espaciados */
-  --header-altura: 88px;
+  --header-altura: 108px;
   --radio-borde: 14px;
   --radio-pildora: 9999px;
   --transicion-base: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -98,11 +98,24 @@ img, svg {
   margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+
+  @media (max-width: 600px) {
+    padding-left: 1.15rem;
+    padding-right: 1.15rem;
+  }
 }
 
 .seccion {
   padding: 5rem 0;
   position: relative;
+
+  @media (max-width: 768px) {
+    padding: 3.5rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2.75rem 0;
+  }
 
   &--clara {
     background-color: var(--color-verde-claro);
@@ -125,9 +138,17 @@ img, svg {
   transition: var(--transicion-suave);
   text-decoration: none;
   overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+
+  @media (max-width: 480px) {
+    padding: 0.8rem 1.4rem;
+    font-size: 0.9rem;
+  }
 
   svg {
     transition: transform var(--transicion-base);
+    flex-shrink: 0;
   }
 
   &--primario {
@@ -180,6 +201,11 @@ img, svg {
   padding: 1.75rem;
   transition: var(--transicion-suave);
   box-shadow: 0 4px 12px var(--color-sombra-suave);
+
+  @media (max-width: 600px) {
+    padding: 1.35rem 1.15rem;
+    border-radius: 12px;
+  }
 
   &:hover {
     transform: translateY(-4px);

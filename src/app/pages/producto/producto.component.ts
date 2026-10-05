@@ -19,11 +19,13 @@ export class ProductoComponent implements OnInit {
   producto?: Product;
 
   ngOnInit(): void {
-    const slug = this.route.snapshot.paramMap.get('slug');
-    if (slug) {
-      this.producto = this.productsService.getBySlug(slug);
-    } else {
-      this.producto = this.productsService.getAll()[0];
-    }
+    this.route.paramMap.subscribe(params => {
+      const slug = params.get('slug');
+      if (slug) {
+        this.producto = this.productsService.getBySlug(slug);
+      } else {
+        this.producto = this.productsService.getAll()[0];
+      }
+    });
   }
 }

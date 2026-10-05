@@ -3,10 +3,10 @@
     
     <!-- Encabezado del Catálogo -->
     <header class="catalogo-encabezado" appReveal="fade-up">
-      <span class="etiqueta catalogo-encabezado__badge efecto-flotante">Catálogo Farmacéutico B2B</span>
+      <span class="etiqueta catalogo-encabezado__badge efecto-flotante">Línea Farmacéutica y Natural</span>
       <h1 class="catalogo-encabezado__titulo">Catálogo de Productos</h1>
       <p class="catalogo-encabezado__subtitulo">
-        Explora nuestras formulaciones fitofármacas, suplementos y soluciones de alta rotación para farmacias y recintos de salud.
+        Explora nuestras formulaciones terapéuticas, suplementos botánicos y soluciones diseñadas para tu salud y bienestar.
       </p>
 
       <!-- Barra de Búsqueda en Tiempo Real -->
@@ -93,33 +93,6 @@
       <!-- Fila 3: Clasificación & Estados Especiales -->
       <div class="catalogo-filtros__fila-mixta">
         
-        <!-- Clasificación -->
-        <div class="catalogo-filtros__grupo">
-          <span class="catalogo-filtros__label">Condición:</span>
-          <div class="catalogo-filtros__chips">
-            <button 
-              type="button" 
-              class="etiqueta chip-filtro" 
-              [class.chip-filtro--activo]="clasificacionSeleccionada() === 'todas'"
-              (click)="setClasificacion('todas')">
-              Todas
-            </button>
-            <button 
-              type="button" 
-              class="etiqueta chip-filtro" 
-              [class.chip-filtro--activo]="clasificacionSeleccionada() === 'venta-directa'"
-              (click)="setClasificacion('venta-directa')">
-              Venta Directa
-            </button>
-            <button 
-              type="button" 
-              class="etiqueta chip-filtro" 
-              [class.chip-filtro--activo]="clasificacionSeleccionada() === 'con-receta'"
-              (click)="setClasificacion('con-receta')">
-              Bajo Receta
-            </button>
-          </div>
-        </div>
 
         <!-- Toggles de Novedad / Destacados -->
         <div class="catalogo-filtros__toggles">

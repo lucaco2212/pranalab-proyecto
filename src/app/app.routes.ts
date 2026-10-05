@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
-    title: 'Pranalab | Laboratorio Farmacéutico B2B'
+    title: 'Pranalab | Laboratorio Farmacéutico & Bienestar Natural'
   },
   {
     path: 'nosotros',
@@ -24,7 +24,7 @@ export const routes: Routes = [
   {
     path: 'contacto',
     loadComponent: () => import('./pages/contacto/contacto.component').then(m => m.ContactoComponent),
-    title: 'Contacto Comercial | Pranalab'
+    title: 'Contacto | Pranalab'
   },
   {
     path: '**',

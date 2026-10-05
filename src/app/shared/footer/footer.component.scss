@@ -18,13 +18,19 @@
     grid-template-columns: 1fr;
     gap: 3.5rem;
 
-    @media (min-width: 640px) {
+    @media (min-width: 640px) and (max-width: 1023px) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
     }
 
-    @media (min-width: 1100px) {
-      grid-template-columns: 1.55fr 1.05fr 1.35fr 1.35fr;
-      gap: 4rem;
+    @media (max-width: 600px) {
+      padding: 3.25rem 1.25rem 2.75rem 1.25rem;
+      gap: 2.25rem;
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 1.4fr 1fr 1.3fr;
+      gap: 4.5rem;
     }
   }
 
@@ -46,6 +52,10 @@
     align-self: flex-start;
     transition: var(--transicion-base);
 
+    @media (max-width: 600px) {
+      margin-bottom: 1.25rem;
+    }
+
     &:hover {
       opacity: 0.95;
       transform: translateY(-3px) scale(1.02);
@@ -58,6 +68,12 @@
     color: #c2d6ca;
     margin-bottom: 2rem;
     max-width: 440px;
+
+    @media (max-width: 600px) {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__titulo {
@@ -68,6 +84,11 @@
     margin-bottom: 1.75rem;
     position: relative;
     padding-bottom: 0.75rem;
+
+    @media (max-width: 600px) {
+      margin-bottom: 1.25rem;
+      font-size: 1.15rem;
+    }
 
     &::after {
       content: '';
@@ -89,6 +110,10 @@
     display: flex;
     flex-direction: column;
     gap: 1.15rem;
+
+    @media (max-width: 600px) {
+      gap: 0.85rem;
+    }
   }
 
   &__enlace {
@@ -99,6 +124,10 @@
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
+
+    @media (max-width: 600px) {
+      font-size: 0.95rem;
+    }
 
     .pie-bullet {
       font-size: 0.75rem;
@@ -117,12 +146,6 @@
     }
   }
 
-  /* Tarjetas de Líneas Terapéuticas */
-  &__lineas {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
 
   /* Lista de Contacto */
   &__contacto-lista {
@@ -132,6 +155,11 @@
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+
+    @media (max-width: 600px) {
+      gap: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
   }
 
   &__contacto-item {
@@ -142,12 +170,29 @@
     color: #d1e2d7;
     line-height: 1.5;
 
+    @media (max-width: 600px) {
+      font-size: 0.9rem;
+      gap: 0.75rem;
+    }
+
     .icono {
       flex-shrink: 0;
       color: #65b32e;
       margin-top: 3px;
       width: 22px;
       height: 22px;
+    }
+  }
+
+  &__contacto-enlace {
+    color: #d1e2d7;
+    text-decoration: none;
+    transition: var(--transicion-base);
+    word-break: break-word;
+
+    &:hover {
+      color: var(--color-blanco);
+      text-decoration: underline;
     }
   }
 
@@ -167,6 +212,10 @@
     padding: 1.6rem 0;
     background-color: #0b6b3a;
 
+    @media (max-width: 600px) {
+      padding: 1.25rem 0;
+    }
+
     &-contenedor {
       width: 100%;
       max-width: 1440px;
@@ -180,6 +229,11 @@
       font-size: 0.95rem;
       color: #e2ede5;
       text-align: center;
+
+      @media (max-width: 600px) {
+        padding: 0 1.25rem;
+        font-size: 0.85rem;
+      }
 
       @media (min-width: 768px) {
         flex-direction: row;
@@ -208,6 +262,11 @@
   border-radius: 14px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   transition: transform var(--transicion-base);
+
+  @media (max-width: 480px) {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+  }
 }
 
 .pie-logo-img {
@@ -215,6 +274,11 @@
   width: auto;
   max-width: 250px;
   object-fit: contain;
+
+  @media (max-width: 480px) {
+    height: 52px;
+    max-width: 180px;
+  }
 }
 
 /* Botones de Redes Sociales */
@@ -252,52 +316,6 @@
   }
 }
 
-/* Tarjetas miniatura para líneas de productos */
-.pie-linea-card {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  padding: 0.85rem 1.15rem;
-  transition: var(--transicion-suave);
-  text-decoration: none;
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.14);
-    border-color: #65b32e;
-    transform: translateX(5px);
-
-    .pie-linea-card__nombre {
-      color: var(--color-blanco);
-    }
-  }
-
-  &__icono {
-    font-size: 1.65rem;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-
-  &__info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-
-  &__nombre {
-    font-size: 0.94rem;
-    font-weight: 700;
-    color: #e2ede5;
-    transition: color var(--transicion-base);
-  }
-
-  &__sub {
-    font-size: 0.8rem;
-    color: #a4beae;
-  }
-}
 
 /* Sello de Certificación de Calidad */
 .pie-sello-certificacion {
@@ -311,6 +329,12 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   transition: var(--transicion-suave);
 
+  @media (max-width: 480px) {
+    padding: 0.9rem 1rem;
+    gap: 0.85rem;
+    border-radius: 12px;
+  }
+
   &:hover {
     background: rgba(255, 255, 255, 0.14);
     border-color: #65b32e;
@@ -323,6 +347,11 @@
     svg {
       width: 40px;
       height: 40px;
+
+      @media (max-width: 480px) {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 
@@ -337,12 +366,20 @@
     font-weight: 800;
     color: var(--color-blanco);
     letter-spacing: 0.06em;
+
+    @media (max-width: 480px) {
+      font-size: 0.95rem;
+    }
   }
 
   .pie-sello-desc {
     font-size: 0.82rem;
     color: #a4beae;
     line-height: 1.35;
+
+    @media (max-width: 480px) {
+      font-size: 0.78rem;
+    }
   }
 }
 
