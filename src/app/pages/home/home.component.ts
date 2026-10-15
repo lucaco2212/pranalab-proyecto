@@ -258,6 +258,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       subtitulo: 'Fermento probiótico en polvo con 4 cepas microencapsuladas para preparar yogurt casero natural y nutritivo.',
       imagen: '/assets/images/products/yogurlab-probioticos-5-sachets.png',
       badge: 'Cultivo Probiótico'
+
     },
     {
       id: 33,
@@ -279,6 +280,41 @@ export class HomeComponent implements OnInit, OnDestroy {
       subtitulo: 'Dosis concentrada de Ácido Ascórbico para defensas inmunológicas, síntesis de colágeno y absorción de hierro.',
       imagen: '/assets/images/products/vitamina-c-500mg-30-capsulas.png',
       badge: 'Defensas & Colágeno'
+    },
+    {
+      id: 36,
+      nombre: 'Vitamina C 500 mg (60 Caps)',
+      subtitulo: 'Aporte continuo de Vitamina C para defensas inmunológicas activas, protección antioxidante y síntesis de colágeno.',
+      imagen: '/assets/images/products/vitamina-c-500mg-60-capsulas.png',
+      badge: 'Defensas & Antioxidante'
+    },
+    {
+      id: 37,
+      nombre: 'Vitamina C 1000 mg',
+      subtitulo: 'Fórmula intensiva de alta potencia para máxima respuesta inmune, protección celular frente a radicales libres y colágeno.',
+      imagen: '/assets/images/products/vitamina-c-1000mg-30-capsulas.png',
+      badge: 'Alta Potencia & Defensas'
+    },
+    {
+      id: 38,
+      nombre: 'Vitamina D3 800 UI',
+      subtitulo: 'Colecalciferol de alta biodisponibilidad para optimizar la absorción de calcio, densidad ósea y defensas inmunitarias.',
+      imagen: '/assets/images/products/vitamina-d3-800ui-30-capsulas.jpg',
+      badge: 'Salud Ósea & Inmunidad'
+    },
+    {
+      id: 39,
+      nombre: 'Vitamina E 400 UI',
+      subtitulo: 'Nutriente antioxidante liposoluble en softgel para protección celular frente al estrés oxidativo, piel y sistema cardiovascular.',
+      imagen: '/assets/images/products/vitamina-e-400ui-30-capsulas.png',
+      badge: 'Antioxidante & Piel'
+    },
+    {
+      id: 40,
+      nombre: 'Zinc 15 mg',
+      subtitulo: 'Mineral traza esencial para defensas inmunitarias, protección antioxidante celular, balance hormonal y salud de piel, cabello y uñas.',
+      imagen: '/assets/images/products/zinc-15mg-30-capsulas.png',
+      badge: 'Defensas & Vitalidad'
     }
   ];
 
@@ -286,7 +322,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private intervaloAutoplay?: any;
   private isPaused = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: object) { }
 
   ngOnInit(): void {
     this.iniciarAutoplay();

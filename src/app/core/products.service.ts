@@ -1090,6 +1090,164 @@ export class ProductsService {
       modoUso: 'Consumir 1 cápsula al día con un vaso de agua, preferentemente junto al desayuno o comida principal, o según indicación profesional.',
       vencimiento: '24 meses desde la fecha de elaboración.',
       almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 36,
+      slug: 'vitamina-c-500mg-60-capsulas',
+      nombre: 'Vitamina C 500 mg x 60 cápsulas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Ácido Ascórbico (Vitamina C 500 mg)',
+      categoria: 'Vitaminas y Suplementos',
+      formaFarmaceutica: 'Cápsulas',
+      imagenes: [
+        '/assets/images/products/vitamina-c-500mg-60-capsulas.png',
+        '/assets/images/products/vitamina-c-500mg-60-capsulas-pack.jpg'
+      ],
+      composicion: 'Ácido Ascórbico (Vitamina C 500 mg). Cápsula: Gelatina.',
+      presentacion: 'Frasco con sello de seguridad (60 cápsulas)',
+      posologia: 'Consumir 2 cápsulas al día con abundante agua, preferentemente distribuidas junto con las comidas principales, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Aporte continuo y concentrado de Vitamina C para reforzar las defensas inmunitarias, optimizar la absorción de hierro, apoyar la formación de colágeno y reducir el cansancio.',
+      descripcionParrafos: [
+        'La Vitamina C (Ácido Ascórbico) es un nutriente esencial que actúa como un potente agente antioxidante en el organismo. Esta presentación de 60 cápsulas permite un aporte continuo y concentrado diseñado para reforzar el sistema inmunitario, optimizar la absorción de hierro, estimular la síntesis natural de colágeno y favorecer la protección antioxidante frente al desgaste diario.',
+        'Refuerzo del Sistema Inmunitario: La Vitamina C contribuye al funcionamiento normal del sistema inmunitario, apoyando las defensas naturales del organismo frente a cambios de estación y agentes externos.',
+        'Optimización de la Absorción de Hierro: Mejora la absorción del hierro de origen vegetal (no hemo) presente en la dieta, apoyando el mantenimiento de niveles saludables de este mineral esencial.',
+        'Formación de Colágeno y Salud Articular/Cutánea: Contribuye a la formación normal de colágeno para el funcionamiento adecuado de los cartílagos, huesos, vasos sanguíneos, encías y piel, favoreciendo la firmeza de los tejidos conectivos.',
+        'Protección Antioxidante y Reducción de la Fatiga: Contribuye a la protección de las células frente al daño oxidativo y favorece el metabolismo energético normal, ayudando a reducir el cansancio y el agotamiento físico.'
+      ],
+      contenido: 'Frasco con 60 cápsulas',
+      modoUso: 'Consumir 2 cápsulas al día con abundante agua, preferentemente distribuidas junto con las comidas principales, o según indicación profesional.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 37,
+      slug: 'vitamina-c-1000mg-30-capsulas',
+      nombre: 'Vitamina C 1000 mg x 30 cápsulas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Ácido Ascórbico (Vitamina C 1000 mg)',
+      categoria: 'Vitaminas y Suplementos',
+      formaFarmaceutica: 'Cápsulas',
+      imagenes: [
+        '/assets/images/products/vitamina-c-1000mg-30-capsulas.png',
+        '/assets/images/products/vitamina-c-1000mg-30-capsulas-pack.jpg'
+      ],
+      composicion: 'Ácido Ascórbico (Vitamina C) 1000 mg. Cápsula: Gelatina.',
+      presentacion: 'Frasco con sello de seguridad (30 cápsulas)',
+      posologia: 'Consumir 1 cápsula al día con abundante agua, preferentemente por la mañana junto con el desayuno, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Fórmula intensiva de alta potencia con 1000 mg de Vitamina C por cápsula para un soporte inmune reforzado, máxima acción antioxidante y síntesis de colágeno.',
+      descripcionParrafos: [
+        'La Vitamina C (Ácido Ascórbico) en alta concentración de 1000 mg aporta una dosis intensiva de este nutriente esencial hidrosoluble. Su formato de alta potencia está diseñado para potenciar la respuesta inmunológica, maximizar la protección antioxidante frente al estrés celular, mejorar la absorción de hierro y respaldar la producción de colágeno en los tejidos corporales.',
+        'Soporte Intensivo de la Inmunidad: La Vitamina C contribuye al funcionamiento normal del sistema inmunitario, reforzando las defensas naturales del cuerpo ante exigencias físicas, cambios de estación o factores ambientales.',
+        'Potente Acción Antioxidante: Contribuye a la protección de las células frente al daño oxidativo generado por los radicales libres, ayudando a frenar el envejecimiento y desgaste celular prematuro.',
+        'Optimización de la Absorción de Hierro: Mejora la absorción del hierro de origen vegetal en el tracto digestivo, apoyando el mantenimiento de niveles sanguíneos adecuados de este mineral.',
+        'Síntesis de Colágeno y Salud Articular y Cutánea: Contribuye a la formación normal de colágeno para el funcionamiento adecuado de cartílagos, huesos, vasos sanguíneos, encías y piel, favoreciendo la firmeza de los tejidos conectivos.',
+        'Reducción de la Fatiga y Metabolismo: Favorece el metabolismo energético normal, colaborando activamente en la disminución del cansancio y la fatiga diaria.'
+      ],
+      contenido: 'Frasco con 30 cápsulas',
+      modoUso: 'Consumir 1 cápsula al día con abundante agua, preferentemente por la mañana junto con el desayuno, o según indicación profesional.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 38,
+      slug: 'vitamina-d3-800ui-30-capsulas',
+      nombre: 'Vitamina D3 800 UI x 30 cápsulas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Colecalciferol (Vitamina D3 800 UI / 20 µg)',
+      categoria: 'Vitaminas y Suplementos',
+      formaFarmaceutica: 'Cápsulas',
+      imagenes: [
+        '/assets/images/products/vitamina-d3-800ui-30-capsulas.jpg',
+        '/assets/images/products/vitamina-d3-800ui-30-capsulas-pack.jpg'
+      ],
+      composicion: 'Colecalciferol (Vitamina D3 800 UI - 20 µg), Celulosa Microcristalina. Cápsula: Gelatina.',
+      presentacion: 'Frasco con sello de seguridad (30 cápsulas)',
+      posologia: 'Consumir 1 cápsula al día con un vaso de agua, preferentemente junto con una comida que contenga materia grasa para optimizar su absorción, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Forma activa y altamente biodisponible de Vitamina D3 para optimizar la absorción de calcio y fósforo, fortalecer la masa ósea y respaldar la respuesta inmunitaria.',
+      descripcionParrafos: [
+        'La Vitamina D3 (Colecalciferol) es la forma biológicamente activa y de mayor biodisponibilidad de la vitamina D. Este nutriente liposoluble esencial es fundamental para favorecer la absorción y utilización del calcio y fósforo, mantener la densidad y fortaleza ósea, y respaldar la respuesta inmunológica natural.',
+        'Absorción y Fijación del Calcio: La Vitamina D contribuye a la absorción y utilización normal del calcio y del fósforo en el tracto digestivo, así como al mantenimiento de niveles normales de calcio en sangre.',
+        'Salud Ósea y Dental: Contribuye al mantenimiento de los huesos y dientes en condiciones normales, ayudando a preservar la estructura y densidad del sistema esquelético a lo largo de la vida.',
+        'Soporte del Sistema Inmunitario: Contribuye al funcionamiento normal del sistema inmunitario, apoyando las defensas naturales del organismo frente a factores ambientales.',
+        'Función Muscular y Cardiovascular: Contribuye al mantenimiento de la función muscular normal, favoreciendo la fuerza, la coordinación motora y el bienestar del sistema circulatorio.'
+      ],
+      contenido: 'Frasco con 30 cápsulas',
+      modoUso: 'Consumir 1 cápsula al día con un vaso de agua, preferentemente junto con una comida que contenga materia grasa para optimizar su absorción, o según indicación profesional.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 39,
+      slug: 'vitamina-e-400ui-30-capsulas',
+      nombre: 'Vitamina E 400 UI x 30 cápsulas blandas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'DL-Alfa Tocoferol (Vitamina E 400 UI / 400 mg)',
+      categoria: 'Vitaminas y Suplementos',
+      formaFarmaceutica: 'Cápsulas',
+      imagenes: [
+        '/assets/images/products/vitamina-e-400ui-30-capsulas.png',
+        '/assets/images/products/vitamina-e-400ui-30-capsulas-pack.png'
+      ],
+      composicion: 'DL-Alfa Tocoferol (Vitamina E 400 mg por porción de 1 cápsula), Aceite de Soya. Cápsula blanda: Gelatina, Glicerina, Agua purificada.',
+      presentacion: 'Frasco con sello de seguridad (30 cápsulas blandas)',
+      posologia: 'Consumir 1 cápsula blanda al día con un vaso de agua, preferentemente junto con una comida principal (para favorecer su absorción al ser liposoluble), o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Nutriente liposoluble en cápsulas blandas softgel de alta biodisponibilidad para una potente protección antioxidante celular, nutrición cutánea y soporte cardiovascular.',
+      descripcionParrafos: [
+        'La Vitamina E (DL-Alfa Tocoferol) es un nutriente liposoluble con una destacada acción antioxidante en el organismo. Formulada en cápsulas blandas con base lipídica para maximizar su biodisponibilidad, esta vitamina es fundamental para proteger las células frente al estrés oxidativo, favorecer la salud de la piel y dar soporte al sistema cardiovascular e inmunitario.',
+        'Protección Antioxidante Celular: La Vitamina E contribuye a la protección de las células frente al daño oxidativo, neutralizando el efecto de los radicales libres y preservando la integridad de las membranas celulares.',
+        'Cuidado y Salud Cutánea: Colabora en la nutrición de la epidermis y la protección de los tejidos cutáneos, apoyando la retención de humedad, la elasticidad natural y el mantenimiento de la piel frente al envejecimiento ambiental.',
+        'Soporte Cardiovascular: Favorece la protección de las estructuras lipídicas y vasos sanguíneos frente a la oxidación, colaborando con la salud cardiovascular en el marco de una dieta equilibrada.',
+        'Refuerzo del Sistema Inmunitario: Contribuye al funcionamiento normal del sistema inmunitario, apoyando la respuesta defensiva celular en adultos.'
+      ],
+      contenido: 'Frasco con 30 cápsulas blandas (700 mg c/u)',
+      modoUso: 'Consumir 1 cápsula blanda al día con un vaso de agua, preferentemente junto con una comida principal, o según indicación profesional.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 40,
+      slug: 'zinc-15mg-30-capsulas',
+      nombre: 'Zinc 15 mg x 30 cápsulas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Sulfato de Zinc (Zinc elemental 15 mg)',
+      categoria: 'Minerales y Suplementos',
+      formaFarmaceutica: 'Cápsulas',
+      imagenes: [
+        '/assets/images/products/zinc-15mg-30-capsulas.png',
+        '/assets/images/products/zinc-15mg-30-capsulas-pack.jpg'
+      ],
+      composicion: 'Sulfato de Zinc (equivalente a 15 mg de Zinc elemental), Celulosa Microcristalina. Cápsula: Gelatina.',
+      presentacion: 'Frasco con sello de seguridad (30 cápsulas)',
+      posologia: 'Consumir 1 a 2 cápsulas al día con abundante agua, preferentemente junto a una comida principal, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Mineral traza esencial con 15 mg de Zinc elemental para reforzar las defensas inmunológicas, protección celular antioxidante, balance hormonal y salud de piel, cabello y uñas.',
+      descripcionParrafos: [
+        'El Zinc es un mineral traza esencial implicado en más de 300 reacciones enzimáticas en el organismo. Aporta 15 mg de Zinc elemental por cápsula, constituyendo un pilar fundamental para reforzar la respuesta inmunológica, apoyar la salud reproductiva y hormonal, favorecer la síntesis de proteínas y mantener la integridad de la piel, cabello y uñas.',
+        'Soporte del Sistema Inmunitario: El Zinc contribuye al funcionamiento normal del sistema inmunitario, apoyando las defensas naturales del organismo frente a factores ambientales.',
+        'Protección Antioxidante Celular: Contribuye a la protección de las células frente al daño oxidativo, resguardando las estructuras celulares del envejecimiento prematuro.',
+        'Salud Reproductiva y Balance Hormonal: Contribuye a la fertilidad y reproducción normales, además de colaborar en el mantenimiento de niveles normales de testosterona en sangre.',
+        'Síntesis de Proteínas y División Celular: Contribuye a la síntesis proteica normal y participa en el proceso de división celular, favoreciendo la renovación y regeneración de los tejidos.',
+        'Mantenimiento de Piel, Cabello y Uñas: Contribuye al mantenimiento de la piel, cabello y uñas en condiciones normales, apoyando su estructura, firmeza y vitalidad.',
+        'Metabolismo de Macronutrientes: Contribuye al metabolismo normal de los carbohidratos, ácidos grasos y la Vitamina A, optimizando el aprovechamiento de los nutrientes consumidos.'
+      ],
+      contenido: 'Frasco con 30 cápsulas',
+      modoUso: 'Consumir 1 a 2 cápsulas al día con abundante agua, preferentemente junto a una comida principal, o según indicación profesional.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
     }
   ];
 
