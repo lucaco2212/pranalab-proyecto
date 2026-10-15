@@ -117,177 +117,64 @@
   }
 }
 
-/* FILTROS */
-.catalogo-filtros {
-  background-color: var(--color-blanco);
-  border: 1px solid var(--color-gris-borde);
-  border-radius: 16px;
-  padding: 1.75rem 2rem;
-  margin-bottom: 2.25rem;
-  box-shadow: 0 4px 16px var(--color-sombra-suave);
+/* ==========================================================================
+   BARRA DE FILTROS POR BOTONES (DISEÑO COMPACTO, ELEGANTE Y ACCESIBLE)
+   ========================================================================== */
+.catalogo-filtros-bar {
   display: flex;
   flex-direction: column;
-  gap: 1.35rem;
+  gap: 1.1rem;
+  margin-bottom: 2.5rem;
 
   @media (max-width: 600px) {
-    padding: 1.25rem 1rem;
-    border-radius: 12px;
-    gap: 1rem;
+    gap: 0.9rem;
     margin-bottom: 1.75rem;
   }
 
-  &__grupo {
+  /* Fila Superior: Meta información (Título, botón limpiar y contador) */
+  &__meta {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
 
     @media (max-width: 640px) {
-      flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
   }
 
-  &__label {
+  &__etiqueta-grupo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  &__titulo {
+    font-family: var(--font-display);
     font-size: 0.82rem;
     font-weight: 700;
-    color: var(--color-verde-profundo);
-    min-width: 150px;
-    padding-top: 0.4rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-
-    @media (max-width: 640px) {
-      min-width: unset;
-      padding-top: 0;
-    }
-  }
-
-  &__chips {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    flex: 1;
-  }
-
-  &__fila-mixta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    padding-top: 0.9rem;
-    border-top: 1px dashed var(--color-gris-borde);
-
-    @media (max-width: 640px) {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.85rem;
-    }
-  }
-
-  &__toggles {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-
-    @media (max-width: 640px) {
-      width: 100%;
-    }
-  }
-}
-
-/* CHIPS */
-.chip-filtro {
-  background-color: var(--color-gris-fondo);
-  color: var(--color-verde-profundo);
-  border: 1px solid var(--color-gris-borde);
-  cursor: pointer;
-  padding: 0.42rem 1rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  border-radius: var(--radio-pildora);
-  transition: var(--transicion-suave);
-  user-select: none;
-
-  @media (max-width: 480px) {
-    padding: 0.38rem 0.85rem;
-    font-size: 0.8rem;
-  }
-
-  &:hover {
-    background-color: var(--color-verde-claro);
-    border-color: var(--color-verde-salvia);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--color-sombra-suave);
-  }
-
-  &--activo {
-    background-color: var(--color-verde-salvia);
-    color: var(--color-blanco);
-    border-color: var(--color-verde-salvia);
-    box-shadow: 0 3px 10px rgba(74, 124, 89, 0.35);
-
-    &:hover {
-      background-color: var(--color-verde-profundo);
-      border-color: var(--color-verde-profundo);
-    }
-  }
-
-  &--toggle {
-    background-color: #fffbeb;
-    border-color: #fde68a;
-    color: #92400e;
-
-    &.chip-filtro--activo {
-      background-color: #f59e0b;
-      border-color: #f59e0b;
-      color: #ffffff;
-      box-shadow: 0 3px 10px rgba(245, 158, 11, 0.35);
-    }
-  }
-}
-
-.boton-limpiar-filtros {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  background: transparent;
-  border: none;
-  color: #dc2626;
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radio-pildora);
-  transition: var(--transicion-base);
-
-  &:hover {
-    background-color: #fef2f2;
-    transform: translateY(-1px);
-  }
-}
-
-/* RESUMEN DE RESULTADOS */
-.catalogo-resumen {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-  padding: 0 0.5rem;
-
-  @media (max-width: 600px) {
-    margin-bottom: 1.5rem;
-    padding: 0;
+    letter-spacing: 0.08em;
+    color: var(--color-verde-profundo);
   }
 
   &__contador {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: var(--color-gris-texto);
+    margin-left: auto;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    @media (max-width: 640px) {
+      margin-left: 0;
+      width: 100%;
+      justify-content: flex-start;
+      font-size: 0.82rem;
+    }
 
     strong {
       color: var(--color-verde-profundo);
@@ -296,21 +183,232 @@
   }
 
   &__busqueda-tag {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--color-verde-salvia);
     background-color: var(--color-verde-claro);
-    padding: 0.28rem 0.85rem;
+    padding: 0.15rem 0.55rem;
     border-radius: var(--radio-pildora);
-    border: 1px solid var(--color-verde-salvia);
-    box-shadow: 0 2px 6px rgba(74, 124, 89, 0.1);
+    border: 1px solid rgba(74, 124, 89, 0.22);
+  }
+
+  /* Grupo de Botones de Categorías */
+  &__grupo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
+
+    @media (max-width: 600px) {
+      gap: 0.45rem;
+    }
+  }
+
+  /* Subgrupo de Formas Farmacéuticas */
+  &__subgrupo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding-top: 0.35rem;
+
+    @media (max-width: 600px) {
+      gap: 0.5rem;
+      padding-top: 0.15rem;
+    }
+  }
+
+  &__subtitulo {
+    font-family: var(--font-display);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-gris-texto);
+    user-select: none;
+  }
+
+  &__forma-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
   }
 }
 
-/* GRID */
+/* BOTONES TIPO PÍLDORA (CHIPS INTERACTIVOS) */
+.filtro-btn-pildora {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 38px;
+  min-height: 38px;
+  padding: 0 0.95rem;
+  background-color: var(--color-blanco);
+  border: 1.5px solid var(--color-gris-borde);
+  border-radius: var(--radio-pildora);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-verde-profundo);
+  cursor: pointer;
+  box-shadow: 0 2px 5px var(--color-sombra-suave);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  white-space: nowrap;
+
+  @media (max-width: 600px) {
+    min-height: 42px; /* Touch target accesible en móvil */
+    padding: 0 0.85rem;
+    font-size: 0.74rem;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-verde-claro);
+    border-color: var(--color-verde-salvia);
+    color: var(--color-verde-profundo);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(74, 124, 89, 0.14);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-verde-salvia);
+    outline-offset: 2px;
+  }
+
+  /* Badge con conteo dinámico */
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.35rem;
+    height: 1.35rem;
+    padding: 0 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: var(--radio-pildora);
+    background-color: rgba(74, 124, 89, 0.1);
+    color: var(--color-verde-salvia);
+    transition: var(--transicion-base);
+  }
+
+  /* Icono '✕' cuando está activo */
+  &__icono-quitar {
+    font-size: 0.72rem;
+    font-weight: 700;
+    opacity: 0.85;
+    margin-left: 0.1rem;
+    line-height: 1;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  /* Estado ACTIVO: Verde Salvia con texto y badge en blanco */
+  &--activo {
+    background-color: var(--color-verde-salvia);
+    border-color: var(--color-verde-salvia);
+    color: var(--color-blanco);
+    box-shadow: 0 4px 12px rgba(74, 124, 89, 0.3);
+
+    .filtro-btn-pildora__badge {
+      background-color: rgba(255, 255, 255, 0.25);
+      color: var(--color-blanco);
+    }
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-verde-profundo);
+      border-color: var(--color-verde-profundo);
+      color: var(--color-blanco);
+      box-shadow: 0 5px 14px rgba(47, 74, 62, 0.35);
+
+      .filtro-btn-pildora__badge {
+        background-color: rgba(255, 255, 255, 0.3);
+        color: var(--color-blanco);
+      }
+    }
+  }
+
+  /* Variante más sutil para Forma Farmacéutica */
+  &--forma {
+    height: 34px;
+    min-height: 34px;
+    font-size: 0.74rem;
+    padding: 0 0.8rem;
+
+    @media (max-width: 600px) {
+      min-height: 40px;
+      font-size: 0.72rem;
+    }
+  }
+
+  /* Estado DESHABILITADO: 0 resultados con el filtro cruzado actual */
+  &--deshabilitado,
+  &:disabled {
+    opacity: 0.42;
+    background-color: #f8fafc;
+    border-color: var(--color-gris-borde);
+    color: #94a3b8;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none !important;
+
+    .filtro-btn-pildora__badge {
+      background-color: #e2e8f0;
+      color: #94a3b8;
+    }
+  }
+}
+
+/* BOTÓN DE ACCIÓN "LIMPIAR FILTROS" */
+.filtro-btn-limpiar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 28px;
+  padding: 0 0.65rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radio-pildora);
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gris-texto);
+  cursor: pointer;
+  transition: var(--transicion-base);
+  user-select: none;
+
+  &:hover {
+    color: #dc2626;
+    background-color: #fef2f2;
+    border-color: #fecaca;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-verde-salvia);
+    outline-offset: 2px;
+  }
+}
+
+
+/* GRID DE PRODUCTOS CON TRANSICIÓN SUAVE */
 .catalogo-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  min-height: 280px;
+  transition: opacity 0.22s ease-out;
 
   @media (max-width: 600px) {
     gap: 1.5rem;
@@ -325,14 +423,14 @@
   }
 }
 
-/* ESTADO VACÍO */
+/* ESTADO VACÍO (SIN RESULTADOS) */
 .catalogo-vacio {
   background-color: var(--color-blanco);
   border: 1px dashed var(--color-gris-borde);
   border-radius: 16px;
-  padding: 4rem 2rem;
+  padding: 3.5rem 2rem;
   text-align: center;
-  max-width: 600px;
+  max-width: 540px;
   margin: 2rem auto;
   box-shadow: 0 4px 16px var(--color-sombra-suave);
 
@@ -340,25 +438,53 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
+    width: 72px;
+    height: 72px;
     background-color: var(--color-verde-claro);
     color: var(--color-verde-salvia);
     border-radius: 50%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   &__titulo {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--color-verde-profundo);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.65rem;
   }
 
   &__texto {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--color-gris-texto);
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
+  }
+
+  &__enlace-limpiar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-blanco);
+    background-color: var(--color-verde-salvia);
+    border: none;
+    border-radius: var(--radio-pildora);
+    cursor: pointer;
+    transition: var(--transicion-suave);
+    box-shadow: 0 4px 12px rgba(74, 124, 89, 0.25);
+
+    &:hover {
+      background-color: var(--color-verde-profundo);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(47, 74, 62, 0.3);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-verde-salvia);
+      outline-offset: 2px;
+    }
   }
 }

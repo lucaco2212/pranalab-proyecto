@@ -20,10 +20,24 @@
       <!-- COLUMNA IZQUIERDA: Imagen y Pastillas Informativas -->
       <div class="tarjeta-detalle__col-visual">
         <div class="producto-visual-caja">
-          <img [src]="producto.imagenes[0]" 
+          <img [src]="imagenSeleccionada || producto.imagenes[0]" 
                [alt]="producto.nombre" 
                class="producto-visual-caja__img" />
         </div>
+
+        @if (producto.imagenes && producto.imagenes.length > 1) {
+          <div class="producto-galeria-thumbs">
+            @for (img of producto.imagenes; track img; let i = $index) {
+              <button type="button" 
+                      class="producto-thumb-btn" 
+                      [class.producto-thumb-btn--activo]="(imagenSeleccionada || producto.imagenes[0]) === img"
+                      (click)="seleccionarImagen(img)"
+                      [attr.aria-label]="'Ver imagen ' + (i + 1)">
+                <img [src]="img" [alt]="producto.nombre" />
+              </button>
+            }
+          </div>
+        }
 
         <!-- Pastillas informativas inferiores -->
         <div class="producto-pastillas">
@@ -81,6 +95,16 @@
               <div class="producto-especificacion" *ngIf="producto.composicion">
                 <span class="producto-especificacion__label">Composición:</span>
                 <span class="producto-especificacion__valor">{{ producto.composicion }}</span>
+              </div>
+
+              <div class="producto-especificacion" *ngIf="producto.almacenamiento">
+                <span class="producto-especificacion__label">Almacenamiento:</span>
+                <span class="producto-especificacion__valor">{{ producto.almacenamiento }}</span>
+              </div>
+
+              <div class="producto-especificacion" *ngIf="producto.vencimiento">
+                <span class="producto-especificacion__label">Vencimiento:</span>
+                <span class="producto-especificacion__valor">{{ producto.vencimiento }}</span>
               </div>
 
               <div class="producto-especificacion" *ngIf="producto.clasificacion">

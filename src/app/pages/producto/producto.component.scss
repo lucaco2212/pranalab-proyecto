@@ -120,6 +120,59 @@
   }
 }
 
+/* Galería de Miniaturas */
+.producto-galeria-thumbs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.25rem 0;
+}
+
+.producto-thumb-btn {
+  width: 68px;
+  height: 68px;
+  padding: 0.35rem;
+  background-color: var(--color-blanco);
+  border: 2px solid var(--color-gris-borde);
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transicion-base);
+  box-shadow: 0 2px 6px var(--color-sombra-suave);
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform var(--transicion-base);
+  }
+
+  &:hover {
+    border-color: var(--color-verde-salvia);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(74, 124, 89, 0.15);
+
+    img {
+      transform: scale(1.08);
+    }
+  }
+
+  &--activo {
+    border-color: var(--color-verde-salvia);
+    box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.25);
+    background-color: var(--color-verde-claro);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-verde-salvia);
+    outline-offset: 2px;
+  }
+}
+
 /* Pastillas informativas inferiores */
 .producto-pastillas {
   display: grid;

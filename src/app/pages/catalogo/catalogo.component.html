@@ -41,112 +41,90 @@
       </div>
     </header>
 
-    <!-- Panel de Filtros -->
-    <section class="catalogo-filtros" aria-label="Filtros del catálogo" appReveal="fade-up" [revealDelay]="100">
+    <!-- Barra de Filtros por Botones (Diseño Compacto, Limpio y Accesible) -->
+    <section class="catalogo-filtros-bar" aria-label="Filtros del catálogo" appReveal="fade-up" [revealDelay]="80">
       
-      <!-- Fila 1: Categorías -->
-      <div class="catalogo-filtros__grupo" *ngIf="categorias.length > 0">
-        <span class="catalogo-filtros__label">Categoría:</span>
-        <div class="catalogo-filtros__chips">
-          <button 
-            type="button" 
-            class="etiqueta chip-filtro" 
-            [class.chip-filtro--activo]="categoriaSeleccionada() === 'todas'"
-            (click)="setCategoria('todas')">
-            Todas
-          </button>
-          @for (cat of categorias; track cat) {
+      <!-- Fila Superior: Encabezado de Filtros, Acción Limpiar y Contador -->
+      <div class="catalogo-filtros-bar__meta">
+        <div class="catalogo-filtros-bar__etiqueta-grupo">
+          <span class="catalogo-filtros-bar__titulo">Filtrar por categoría</span>
+          @if (hayFiltrosBotonesActivos()) {
             <button 
               type="button" 
-              class="etiqueta chip-filtro" 
-              [class.chip-filtro--activo]="categoriaSeleccionada() === cat"
-              (click)="setCategoria(cat)">
-              {{ cat }}
-            </button>
-          }
-        </div>
-      </div>
-
-      <!-- Fila 2: Formas Farmacéuticas -->
-      <div class="catalogo-filtros__grupo" *ngIf="formasFarmaceuticas.length > 0">
-        <span class="catalogo-filtros__label">Forma Farmacéutica:</span>
-        <div class="catalogo-filtros__chips">
-          <button 
-            type="button" 
-            class="etiqueta chip-filtro" 
-            [class.chip-filtro--activo]="formaSeleccionada() === 'todas'"
-            (click)="setForma('todas')">
-            Todas las formas
-          </button>
-          @for (forma of formasFarmaceuticas; track forma) {
-            <button 
-              type="button" 
-              class="etiqueta chip-filtro" 
-              [class.chip-filtro--activo]="formaSeleccionada() === forma"
-              (click)="setForma(forma)">
-              {{ forma }}
-            </button>
-          }
-        </div>
-      </div>
-
-      <!-- Fila 3: Clasificación & Estados Especiales -->
-      <div class="catalogo-filtros__fila-mixta">
-        
-
-        <!-- Toggles de Novedad / Destacados -->
-        <div class="catalogo-filtros__toggles">
-          <button 
-            type="button" 
-            class="etiqueta chip-filtro chip-filtro--toggle" 
-            [class.chip-filtro--activo]="soloNuevos()"
-            (click)="toggleNuevos()">
-            <span>✨ Nuevos</span>
-          </button>
-          <button 
-            type="button" 
-            class="etiqueta chip-filtro chip-filtro--toggle" 
-            [class.chip-filtro--activo]="soloDestacados()"
-            (click)="toggleDestacados()">
-            <span>⭐ Destacados</span>
-          </button>
-
-          @if (hayFiltrosActivos()) {
-            <button 
-              type="button" 
-              class="boton-limpiar-filtros" 
-              (click)="limpiarFiltros()">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="1 4 1 10 7 10"></polyline>
-                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+              class="filtro-btn-limpiar" 
+              (click)="limpiarFiltros()"
+              aria-label="Restablecer todos los filtros de categoría y forma">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
               <span>Limpiar filtros</span>
             </button>
           }
         </div>
 
+        <div class="catalogo-filtros-bar__contador" aria-live="polite">
+          <span>
+            Mostrando <strong>{{ productosFiltrados().length }}</strong> {{ productosFiltrados().length === 1 ? 'producto' : 'productos' }}
+          </span>
+          @if (terminoBusqueda()) {
+            <span class="catalogo-filtros-bar__busqueda-tag">
+              para "<em>{{ terminoBusqueda() }}</em>"
+            </span>
+          }
+        </div>
+      </div>
+
+      <!-- Fila 1: Botones de Categorías -->
+      <div class="catalogo-filtros-bar__grupo" role="group" aria-label="Categorías de productos">
+        @for (opcion of opcionesCategoria(); track opcion.valor) {
+          <button 
+            type="button"
+            class="filtro-btn-pildora"
+            [class.filtro-btn-pildora--activo]="categoriaSeleccionada() === opcion.valor"
+            [class.filtro-btn-pildora--deshabilitado]="opcion.deshabilitada"
+            [disabled]="opcion.deshabilitada"
+            [attr.aria-pressed]="categoriaSeleccionada() === opcion.valor"
+            (click)="toggleCategoria(opcion.valor, opcion.deshabilitada)">
+            <span class="filtro-btn-pildora__nombre">{{ opcion.valor }}</span>
+            <span class="filtro-btn-pildora__badge">{{ opcion.conteo }}</span>
+            @if (categoriaSeleccionada() === opcion.valor) {
+              <span class="filtro-btn-pildora__icono-quitar" aria-hidden="true">✕</span>
+            }
+          </button>
+        }
+      </div>
+
+      <!-- Fila 2: Formas Farmacéuticas (Segmento Compacto) -->
+      <div class="catalogo-filtros-bar__subgrupo" role="group" aria-label="Forma farmacéutica">
+        <span class="catalogo-filtros-bar__subtitulo">Forma:</span>
+        <div class="catalogo-filtros-bar__forma-chips">
+          @for (opcion of opcionesForma(); track opcion.valor) {
+            <button 
+              type="button"
+              class="filtro-btn-pildora filtro-btn-pildora--forma"
+              [class.filtro-btn-pildora--activo]="formaSeleccionada() === opcion.valor"
+              [class.filtro-btn-pildora--deshabilitado]="opcion.deshabilitada"
+              [disabled]="opcion.deshabilitada"
+              [attr.aria-pressed]="formaSeleccionada() === opcion.valor"
+              (click)="toggleForma(opcion.valor, opcion.deshabilitada)">
+              <span class="filtro-btn-pildora__nombre">{{ opcion.valor }}</span>
+              <span class="filtro-btn-pildora__badge">{{ opcion.conteo }}</span>
+              @if (formaSeleccionada() === opcion.valor) {
+                <span class="filtro-btn-pildora__icono-quitar" aria-hidden="true">✕</span>
+              }
+            </button>
+          }
+        </div>
       </div>
 
     </section>
-
-    <!-- Barra de Estado / Contador de Resultados -->
-    <div class="catalogo-resumen" appReveal="fade-up" [revealDelay]="150">
-      <span class="catalogo-resumen__contador">
-        Mostrando <strong>{{ productosFiltrados().length }}</strong> {{ productosFiltrados().length === 1 ? 'producto' : 'productos' }}
-      </span>
-
-      @if (terminoBusqueda()) {
-        <span class="catalogo-resumen__busqueda-tag">
-          Filtrado por: "<em>{{ terminoBusqueda() }}</em>"
-        </span>
-      }
-    </div>
 
     <!-- Grid de Productos -->
     @if (productosFiltrados().length > 0) {
       <div class="catalogo-grid">
         @for (prod of productosFiltrados(); track prod.id; let i = $index) {
-          <div appReveal="fade-up" [revealDelay]="(i % 6) * 80">
+          <div appReveal="fade-up" [revealDelay]="(i % 6) * 60">
             <app-product-card [producto]="prod"></app-product-card>
           </div>
         }
@@ -155,18 +133,18 @@
       <!-- Estado Vacío (Sin Resultados) -->
       <div class="catalogo-vacio" appReveal="fade-up">
         <div class="catalogo-vacio__icono-caja">
-          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             <line x1="8" y1="11" x2="14" y2="11"></line>
           </svg>
         </div>
-        <h2 class="catalogo-vacio__titulo">No se encontraron productos</h2>
+        <h2 class="catalogo-vacio__titulo">No hay productos con estos filtros</h2>
         <p class="catalogo-vacio__texto">
-          No hay formulaciones que coincidan con los criterios o términos de búsqueda seleccionados.
+          No encontramos formulaciones disponibles para los filtros seleccionados.
         </p>
-        <button type="button" class="boton boton--primario" (click)="limpiarFiltros()">
-          Restablecer todos los filtros
+        <button type="button" class="catalogo-vacio__enlace-limpiar" (click)="limpiarTodosLosFiltros()">
+          Limpiar filtros
         </button>
       </div>
     }

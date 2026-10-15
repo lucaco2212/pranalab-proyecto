@@ -79,7 +79,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
         rgba(255, 255, 255, 0.82) 40%,
         rgba(255, 255, 255, 0.42) 75%,
         rgba(255, 255, 255, 0.18) 100%
-      ), url('/assets/images/hero-banner.jpg');
+      ), url('/assets/images/contacto-bg.jpg');
       background-size: cover;
       background-position: right center;
       background-repeat: no-repeat;
@@ -91,7 +91,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
           180deg,
           rgba(255, 255, 255, 0.94) 0%,
           rgba(255, 255, 255, 0.82) 100%
-        ), url('/assets/images/hero-banner.jpg');
+        ), url('/assets/images/contacto-bg.jpg');
       }
     }
 

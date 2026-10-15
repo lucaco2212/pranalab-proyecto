@@ -19,4 +19,6 @@ export interface Product {
   descripcionParrafos?: string[];
   contenido?: string;
   modoUso?: string;
+  almacenamiento?: string;
+  vencimiento?: string;
 }

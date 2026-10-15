@@ -17,6 +17,7 @@ export class ProductoComponent implements OnInit {
   private readonly productsService = inject(ProductsService);
 
   producto?: Product;
+  imagenSeleccionada?: string;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -26,6 +27,13 @@ export class ProductoComponent implements OnInit {
       } else {
         this.producto = this.productsService.getAll()[0];
       }
+      if (this.producto?.imagenes?.length) {
+        this.imagenSeleccionada = this.producto.imagenes[0];
+      }
     });
+  }
+
+  seleccionarImagen(img: string): void {
+    this.imagenSeleccionada = img;
   }
 }

@@ -1,11 +1,28 @@
-import { Component, inject, OnInit, OnDestroy, signal, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  Component,
+  inject,
+  OnInit,
+  OnDestroy,
+  signal,
+  computed,
+  PLATFORM_ID,
+  ElementRef,
+  ViewChild,
+  HostListener
+} from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductsService } from '../../core/products.service';
 import { ProductCardComponent } from '../../shared/product-card/product-card.component';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
-import { Product, ClasificacionProducto } from '../../core/models/product.model';
+import { Product } from '../../core/models/product.model';
+
+export interface OpcionFiltro {
+  valor: string;
+  conteo: number;
+  deshabilitada: boolean;
+}
 
 @Component({
   selector: 'app-catalogo',
@@ -18,6 +35,7 @@ export class CatalogoComponent implements OnInit, OnDestroy {
   private readonly productsService = inject(ProductsService);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  private readonly platformId = inject(PLATFORM_ID);
   private querySub?: Subscription;
 
   // Lista base de productos y opciones
@@ -27,101 +45,100 @@ export class CatalogoComponent implements OnInit, OnDestroy {
 
   // Signals para el estado de los filtros
   readonly terminoBusqueda = signal<string>('');
-  readonly categoriaSeleccionada = signal<string>('todas');
-  readonly formaSeleccionada = signal<string>('todas');
-  readonly clasificacionSeleccionada = signal<string>('todas');
-  readonly soloNuevos = signal<boolean>(false);
-  readonly soloDestacados = signal<boolean>(false);
+  readonly categoriaSeleccionada = signal<string>('');
+  readonly formaSeleccionada = signal<string>('');
 
-  // Signal computado para verificar si hay algún filtro activo
+  // Opciones de categoría con conteos dinámicos basados en la forma y búsqueda actuales
+  readonly opcionesCategoria = computed<OpcionFiltro[]>(() => {
+    const forma = this.formaSeleccionada();
+    const termino = this.terminoBusqueda().trim().toLowerCase();
+
+    return this.categorias.map(cat => {
+      const conteo = this.todosLosProductos.filter(p => {
+        if (p.categoria !== cat) return false;
+        if (forma && p.formaFarmaceutica !== forma) return false;
+        if (termino && !this.coincideBusqueda(p, termino)) return false;
+        return true;
+      }).length;
+
+      return {
+        valor: cat,
+        conteo,
+        deshabilitada: conteo === 0
+      };
+    });
+  });
+
+  // Opciones de forma farmacéutica con conteos dinámicos basados en la categoría y búsqueda actuales
+  readonly opcionesForma = computed<OpcionFiltro[]>(() => {
+    const categoria = this.categoriaSeleccionada();
+    const termino = this.terminoBusqueda().trim().toLowerCase();
+
+    return this.formasFarmaceuticas.map(forma => {
+      const conteo = this.todosLosProductos.filter(p => {
+        if (p.formaFarmaceutica !== forma) return false;
+        if (categoria && p.categoria !== categoria) return false;
+        if (termino && !this.coincideBusqueda(p, termino)) return false;
+        return true;
+      }).length;
+
+      return {
+        valor: forma,
+        conteo,
+        deshabilitada: conteo === 0
+      };
+    });
+  });
+
+  // Verifica si hay al menos un filtro de botón activo
+  readonly hayFiltrosBotonesActivos = computed(() => {
+    return this.categoriaSeleccionada() !== '' || this.formaSeleccionada() !== '';
+  });
+
+  // Signal computado para verificar si hay algún filtro activo (incluyendo búsqueda)
   readonly hayFiltrosActivos = computed(() => {
     return (
-      this.terminoBusqueda().trim() !== '' ||
-      this.categoriaSeleccionada() !== 'todas' ||
-      this.formaSeleccionada() !== 'todas' ||
-      this.clasificacionSeleccionada() !== 'todas' ||
-      this.soloNuevos() ||
-      this.soloDestacados()
+      this.hayFiltrosBotonesActivos() ||
+      this.terminoBusqueda().trim() !== ''
     );
   });
 
-  // Signal computado principal: combina búsqueda en tiempo real + todos los filtros activos
+  // Signal computado principal: combina búsqueda en tiempo real + categoría + forma
   readonly productosFiltrados = computed<Product[]>(() => {
     const termino = this.terminoBusqueda().trim().toLowerCase();
     const categoria = this.categoriaSeleccionada();
     const forma = this.formaSeleccionada();
-    const clasificacion = this.clasificacionSeleccionada();
-    const nuevos = this.soloNuevos();
-    const destacados = this.soloDestacados();
 
     return this.todosLosProductos.filter(producto => {
-      // Filtro por término de búsqueda (nombre, principio activo o descripción)
-      if (termino) {
-        const coincideNombre = producto.nombre.toLowerCase().includes(termino);
-        const coincidePrincipio = producto.principioActivo?.toLowerCase().includes(termino) ?? false;
-        const coincideDesc = producto.descripcionCorta.toLowerCase().includes(termino);
-        if (!coincideNombre && !coincidePrincipio && !coincideDesc) {
-          return false;
-        }
-      }
-
-      // Filtro por categoría
-      if (categoria !== 'todas' && producto.categoria !== categoria) {
+      if (termino && !this.coincideBusqueda(producto, termino)) {
         return false;
       }
-
-      // Filtro por forma farmacéutica
-      if (forma !== 'todas' && producto.formaFarmaceutica !== forma) {
+      if (categoria && producto.categoria !== categoria) {
         return false;
       }
-
-      // Filtro por clasificación (venta directa vs con receta)
-      if (clasificacion !== 'todas' && producto.clasificacion !== clasificacion) {
+      if (forma && producto.formaFarmaceutica !== forma) {
         return false;
       }
-
-      // Filtro por novedad
-      if (nuevos && !producto.nuevo) {
-        return false;
-      }
-
-      // Filtro por destacado
-      if (destacados && !producto.destacado) {
-        return false;
-      }
-
       return true;
     });
   });
 
   ngOnInit(): void {
-    // Sincronización con queryParams de la URL (permite enlazar directamente desde home o compartir links)
+    // Sincronización con queryParams de la URL
     this.querySub = this.route.queryParams.subscribe(params => {
       if (params['buscar'] !== undefined) {
-        this.terminoBusqueda.set(params['buscar']);
+        this.terminoBusqueda.set(params['buscar'] || '');
       }
-      if (params['categoria']) {
+      if (params['categoria'] && params['categoria'] !== 'todas') {
         this.categoriaSeleccionada.set(params['categoria']);
-      } else if (params['categoria'] === null) {
-        this.categoriaSeleccionada.set('todas');
+      } else {
+        this.categoriaSeleccionada.set('');
       }
 
-      if (params['forma']) {
+      if (params['forma'] && params['forma'] !== 'todas') {
         this.formaSeleccionada.set(params['forma']);
-      } else if (params['forma'] === null) {
-        this.formaSeleccionada.set('todas');
-      }
-
-      if (params['clasificacion']) {
-        this.clasificacionSeleccionada.set(params['clasificacion']);
-      }
-
-      if (params['nuevo'] !== undefined) {
-        this.soloNuevos.set(params['nuevo'] === 'true' || params['nuevo'] === true);
-      }
-
-      if (params['destacado'] !== undefined) {
-        this.soloDestacados.set(params['destacado'] === 'true' || params['destacado'] === true);
+      } else {
+        this.formaSeleccionada.set('');
       }
     });
   }
@@ -130,7 +147,7 @@ export class CatalogoComponent implements OnInit, OnDestroy {
     this.querySub?.unsubscribe();
   }
 
-  // Métodos de interacción y actualización de filtros
+  // Métodos de interacción con el buscador
   onInputBusqueda(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.terminoBusqueda.set(input.value);
@@ -142,43 +159,48 @@ export class CatalogoComponent implements OnInit, OnDestroy {
     this.actualizarUrl();
   }
 
-  setCategoria(categoria: string): void {
-    this.categoriaSeleccionada.set(categoria);
+  // Métodos de interacción con los botones de filtro
+  toggleCategoria(categoria: string, deshabilitada: boolean): void {
+    if (deshabilitada) return;
+    this.categoriaSeleccionada.update(actual => actual === categoria ? '' : categoria);
     this.actualizarUrl();
   }
 
-  setForma(forma: string): void {
-    this.formaSeleccionada.set(forma);
+  toggleForma(forma: string, deshabilitada: boolean): void {
+    if (deshabilitada) return;
+    this.formaSeleccionada.update(actual => actual === forma ? '' : forma);
     this.actualizarUrl();
   }
 
-  setClasificacion(clasificacion: string): void {
-    this.clasificacionSeleccionada.set(clasificacion);
-    this.actualizarUrl();
-  }
-
-  toggleNuevos(): void {
-    this.soloNuevos.update(v => !v);
-    this.actualizarUrl();
-  }
-
-  toggleDestacados(): void {
-    this.soloDestacados.update(v => !v);
-    this.actualizarUrl();
-  }
-
+  // Restablece ambos filtros de botones
   limpiarFiltros(): void {
-    this.terminoBusqueda.set('');
-    this.categoriaSeleccionada.set('todas');
-    this.formaSeleccionada.set('todas');
-    this.clasificacionSeleccionada.set('todas');
-    this.soloNuevos.set(false);
-    this.soloDestacados.set(false);
+    this.categoriaSeleccionada.set('');
+    this.formaSeleccionada.set('');
     this.actualizarUrl();
+  }
+
+  // Restablece todos los filtros incluyendo búsqueda
+  limpiarTodosLosFiltros(): void {
+    this.terminoBusqueda.set('');
+    this.categoriaSeleccionada.set('');
+    this.formaSeleccionada.set('');
+    this.actualizarUrl();
+  }
+
+
+  private coincideBusqueda(producto: Product, termino: string): boolean {
+    const coincideNombre = producto.nombre.toLowerCase().includes(termino);
+    const coincidePrincipio = producto.principioActivo?.toLowerCase().includes(termino) ?? false;
+    const coincideDesc = producto.descripcionCorta.toLowerCase().includes(termino);
+    return coincideNombre || coincidePrincipio || coincideDesc;
   }
 
   private actualizarUrl(): void {
-    const queryParams: Record<string, string | null> = {};
+    const queryParams: Record<string, string | null> = {
+      clasificacion: null,
+      nuevo: null,
+      destacado: null
+    };
 
     if (this.terminoBusqueda().trim()) {
       queryParams['buscar'] = this.terminoBusqueda().trim();
@@ -186,34 +208,16 @@ export class CatalogoComponent implements OnInit, OnDestroy {
       queryParams['buscar'] = null;
     }
 
-    if (this.categoriaSeleccionada() !== 'todas') {
+    if (this.categoriaSeleccionada()) {
       queryParams['categoria'] = this.categoriaSeleccionada();
     } else {
       queryParams['categoria'] = null;
     }
 
-    if (this.formaSeleccionada() !== 'todas') {
+    if (this.formaSeleccionada()) {
       queryParams['forma'] = this.formaSeleccionada();
     } else {
       queryParams['forma'] = null;
-    }
-
-    if (this.clasificacionSeleccionada() !== 'todas') {
-      queryParams['clasificacion'] = this.clasificacionSeleccionada();
-    } else {
-      queryParams['clasificacion'] = null;
-    }
-
-    if (this.soloNuevos()) {
-      queryParams['nuevo'] = 'true';
-    } else {
-      queryParams['nuevo'] = null;
-    }
-
-    if (this.soloDestacados()) {
-      queryParams['destacado'] = 'true';
-    } else {
-      queryParams['destacado'] = null;
     }
 
     this.router.navigate([], {
