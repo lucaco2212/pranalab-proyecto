@@ -1255,6 +1255,10 @@ export class ProductsService {
     return [...this.products];
   }
 
+  getById(id: number): Product | undefined {
+    return this.products.find(p => p.id === id);
+  }
+
   getBySlug(slug: string): Product | undefined {
     return this.products.find(p => p.slug === slug);
   }
@@ -1275,5 +1279,10 @@ export class ProductsService {
 
   getDestacados(): Product[] {
     return this.products.filter(p => p.destacado);
+  }
+
+  getDestacadosHome(): Product[] {
+    const ids = [24, 4, 7, 37];
+    return ids.map(id => this.getById(id)).filter((p): p is Product => !!p);
   }
 }
