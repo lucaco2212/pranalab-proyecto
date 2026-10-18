@@ -3,10 +3,10 @@
     
     <!-- Encabezado del Catálogo -->
     <header class="catalogo-encabezado" appReveal="fade-up">
-      <span class="etiqueta catalogo-encabezado__badge efecto-flotante">Línea Farmacéutica y Natural</span>
+      <span class="etiqueta catalogo-encabezado__badge efecto-flotante">Suplementos Alimentarios</span>
       <h1 class="catalogo-encabezado__titulo">Catálogo de Productos</h1>
       <p class="catalogo-encabezado__subtitulo">
-        Explora nuestras formulaciones terapéuticas, suplementos botánicos y soluciones diseñadas para tu salud y bienestar.
+        Explora nuestra variedad de suplementos alimentarios, vitaminas y fórmulas diseñadas para tu salud y bienestar.
       </p>
 
       <!-- Barra de Búsqueda en Tiempo Real -->
@@ -41,24 +41,24 @@
       </div>
     </header>
 
-    <!-- Barra de Filtros por Botones (Diseño Compacto, Limpio y Accesible) -->
+    <!-- Barra de Filtros por Botones (3 Filtros Principales) -->
     <section class="catalogo-filtros-bar" aria-label="Filtros del catálogo" appReveal="fade-up" [revealDelay]="80">
       
       <!-- Fila Superior: Encabezado de Filtros, Acción Limpiar y Contador -->
       <div class="catalogo-filtros-bar__meta">
         <div class="catalogo-filtros-bar__etiqueta-grupo">
-          <span class="catalogo-filtros-bar__titulo">Filtrar por categoría</span>
-          @if (hayFiltrosBotonesActivos()) {
+          <span class="catalogo-filtros-bar__titulo">Filtrar por línea</span>
+          @if (filtroSeleccionado()) {
             <button 
               type="button" 
               class="filtro-btn-limpiar" 
-              (click)="limpiarFiltros()"
-              aria-label="Restablecer todos los filtros de categoría y forma">
+              (click)="limpiarFiltro()"
+              aria-label="Ver todos los productos">
               <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
-              <span>Limpiar filtros</span>
+              <span>Ver todos</span>
             </button>
           }
         </div>
@@ -75,47 +75,24 @@
         </div>
       </div>
 
-      <!-- Fila 1: Botones de Categorías -->
-      <div class="catalogo-filtros-bar__grupo" role="group" aria-label="Categorías de productos">
-        @for (opcion of opcionesCategoria(); track opcion.valor) {
+      <!-- Fila Única: Los 3 Botones de Filtro -->
+      <div class="catalogo-filtros-bar__grupo catalogo-filtros-bar__grupo--tres" role="group" aria-label="Líneas de suplementos">
+        @for (opcion of opcionesFiltro(); track opcion.id) {
           <button 
             type="button"
-            class="filtro-btn-pildora"
-            [class.filtro-btn-pildora--activo]="categoriaSeleccionada() === opcion.valor"
+            class="filtro-btn-pildora filtro-btn-pildora--destacada"
+            [class.filtro-btn-pildora--activo]="filtroSeleccionado() === opcion.id"
             [class.filtro-btn-pildora--deshabilitado]="opcion.deshabilitada"
             [disabled]="opcion.deshabilitada"
-            [attr.aria-pressed]="categoriaSeleccionada() === opcion.valor"
-            (click)="toggleCategoria(opcion.valor, opcion.deshabilitada)">
-            <span class="filtro-btn-pildora__nombre">{{ opcion.valor }}</span>
+            [attr.aria-pressed]="filtroSeleccionado() === opcion.id"
+            (click)="toggleFiltro(opcion.id, opcion.deshabilitada)">
+            <span class="filtro-btn-pildora__nombre">{{ opcion.label }}</span>
             <span class="filtro-btn-pildora__badge">{{ opcion.conteo }}</span>
-            @if (categoriaSeleccionada() === opcion.valor) {
+            @if (filtroSeleccionado() === opcion.id) {
               <span class="filtro-btn-pildora__icono-quitar" aria-hidden="true">✕</span>
             }
           </button>
         }
-      </div>
-
-      <!-- Fila 2: Formas Farmacéuticas (Segmento Compacto) -->
-      <div class="catalogo-filtros-bar__subgrupo" role="group" aria-label="Forma farmacéutica">
-        <span class="catalogo-filtros-bar__subtitulo">Forma:</span>
-        <div class="catalogo-filtros-bar__forma-chips">
-          @for (opcion of opcionesForma(); track opcion.valor) {
-            <button 
-              type="button"
-              class="filtro-btn-pildora filtro-btn-pildora--forma"
-              [class.filtro-btn-pildora--activo]="formaSeleccionada() === opcion.valor"
-              [class.filtro-btn-pildora--deshabilitado]="opcion.deshabilitada"
-              [disabled]="opcion.deshabilitada"
-              [attr.aria-pressed]="formaSeleccionada() === opcion.valor"
-              (click)="toggleForma(opcion.valor, opcion.deshabilitada)">
-              <span class="filtro-btn-pildora__nombre">{{ opcion.valor }}</span>
-              <span class="filtro-btn-pildora__badge">{{ opcion.conteo }}</span>
-              @if (formaSeleccionada() === opcion.valor) {
-                <span class="filtro-btn-pildora__icono-quitar" aria-hidden="true">✕</span>
-              }
-            </button>
-          }
-        </div>
       </div>
 
     </section>
@@ -141,7 +118,7 @@
         </div>
         <h2 class="catalogo-vacio__titulo">No hay productos con estos filtros</h2>
         <p class="catalogo-vacio__texto">
-          No encontramos formulaciones disponibles para los filtros seleccionados.
+          No encontramos suplementos disponibles para los filtros seleccionados.
         </p>
         <button type="button" class="catalogo-vacio__enlace-limpiar" (click)="limpiarTodosLosFiltros()">
           Limpiar filtros

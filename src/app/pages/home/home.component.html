@@ -4,10 +4,9 @@
     
     <!-- Columna Izquierda: Mensaje y Acciones -->
     <div class="seccion-hero__contenido" appReveal="fade-up" [revealDuration]="800">
-      <span class="etiqueta seccion-hero__badge efecto-flotante">Laboratorio Farmacéutico &amp; Fitoterapia</span>
       <h1 class="seccion-hero__titulo">Salud, pureza y bienestar natural.</h1>
       <p class="seccion-hero__subtitulo">
-        Descubre nuestro catálogo de fórmulas terapéuticas, fitofármacos y suplementos elaborados bajo rigurosos estándares de calidad.
+        Descubre nuestro catálogo de suplementos alimentarios elaborados bajo rigurosos estándares de calidad.
       </p>
 
       <div class="seccion-hero__acciones">
@@ -23,13 +22,13 @@
         </a>
       </div>
 
-      <!-- Chips Rápidos a Categorías/Formas -->
+      <!-- Chips Rápidos a las 3 Líneas de Suplementos -->
       <div class="seccion-hero__filtros">
-        <span class="seccion-hero__filtros-etiqueta">Explorar por forma:</span>
+        <span class="seccion-hero__filtros-etiqueta">Explorar por línea:</span>
         <div class="seccion-hero__chips">
           @for (filtro of filtrosRapidos; track filtro.queryParam) {
             <a [routerLink]="['/catalogo']" 
-               [queryParams]="{ forma: filtro.queryParam }" 
+               [queryParams]="{ filtro: filtro.queryParam }" 
                class="etiqueta chip-filtro">
               {{ filtro.label }}
             </a>
@@ -48,7 +47,7 @@
       <span class="seccion__subtitulo-top">Identidad y Misión</span>
       <h2 class="seccion__titulo">Qué hacemos</h2>
       <p class="seccion-que-hacemos__texto">
-        En Pranalab desarrollamos, formulamos y elaboramos soluciones terapéuticas y fitofármacos de la más alta pureza y biodisponibilidad. Elaboramos productos de excelencia pensados tanto para el consumidor final como para farmacias y centros asistenciales de todo el país, garantizando formulaciones de vanguardia y certificación sanitaria.
+        En Pranalab desarrollamos, formulamos y elaboramos suplementos alimentarios, comprometidos con la calidad, la seguridad y la confianza en cada producto. Trabajamos con formulaciones innovadoras y certificación sanitaria, buscando ofrecer productos que respondan a las necesidades de nuestros clientes.
       </p>
 
       <!-- 3 Pilares Fundamentales -->
@@ -66,7 +65,7 @@
         <div class="pilar-card">
           <div class="pilar-card__icono">🛡️</div>
           <h4 class="pilar-card__titulo">Certificación HACCP</h4>
-          <p class="pilar-card__desc">Registro Sanitario servicio salud resolución N°2533 de enero 2003.</p>
+          <p class="pilar-card__desc">Garantizamos la inocuidad y seguridad de los productos mediante el control de riesgos en su elaboración.</p>
         </div>
       </div>
     </div>
@@ -95,18 +94,10 @@
       </div>
 
       <div class="tarjeta-confianza" appReveal="fade-up" [revealDelay]="200">
-        <div class="tarjeta-confianza__icono">🛡️</div>
+        <div class="tarjeta-confianza__icono">📋</div>
         <div class="tarjeta-confianza__info">
-          <h3 class="tarjeta-confianza__titulo">Certificación HACCP</h3>
-          <p class="tarjeta-confianza__texto">Registro Sanitario servicio salud resolución N°2533 de enero 2003.</p>
-        </div>
-      </div>
-
-      <div class="tarjeta-confianza" appReveal="fade-up" [revealDelay]="300">
-        <div class="tarjeta-confianza__icono">🌿</div>
-        <div class="tarjeta-confianza__info">
-          <h3 class="tarjeta-confianza__titulo">Pureza y Biodisponibilidad</h3>
-          <p class="tarjeta-confianza__texto">Formulaciones fitofarmacéuticas de alto estándar para tu farmacia.</p>
+          <h3 class="tarjeta-confianza__titulo">Amplio catálogo</h3>
+          <p class="tarjeta-confianza__texto">Variedad de suplementos alimentarios, vitaminas y diversos formatos formulados para el bienestar integral.</p>
         </div>
       </div>
 
@@ -230,7 +221,7 @@
         </div>
         <h3 class="seccion-diferenciadores__titulo">Fabricación propia</h3>
         <p class="seccion-diferenciadores__texto">
-          Control absoluto de extremo a extremo en nuestras plantas y laboratorios de producción.
+          Supervisamos cada etapa del proceso de elaboración para garantizar la calidad y seguridad de nuestros productos.
         </p>
       </div>
 
@@ -243,26 +234,11 @@
         </div>
         <h3 class="seccion-diferenciadores__titulo">Control de calidad riguroso</h3>
         <p class="seccion-diferenciadores__texto">
-          Análisis analíticos y microbiológicos por lote garantizando estabilidad y máxima pureza.
+          Verificamos cada lote para asegurar el cumplimiento de nuestros estándares de calidad y seguridad.
         </p>
       </div>
 
       <div class="tarjeta seccion-diferenciadores__item" appReveal="fade-up" [revealDelay]="240">
-        <div class="seccion-diferenciadores__icono-wrapper">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-        </div>
-        <h3 class="seccion-diferenciadores__titulo">Equipo técnico especializado</h3>
-        <p class="seccion-diferenciadores__texto">
-          Químicos farmacéuticos y profesionales dedicados a la investigación y desarrollo de fórmulas.
-        </p>
-      </div>
-
-      <div class="tarjeta seccion-diferenciadores__item" appReveal="fade-up" [revealDelay]="360">
         <div class="seccion-diferenciadores__icono-wrapper">
           <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>

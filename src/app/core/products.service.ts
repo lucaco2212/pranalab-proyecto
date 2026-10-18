@@ -964,39 +964,6 @@ export class ProductsService {
       contenido: 'Frasco con 30 cápsulas',
       modoUso: 'Consumir 1 cápsula al día con un vaso de agua, preferentemente por la mañana en ayunas o antes de la comida principal, o según indicación profesional.',
       vencimiento: '18 meses desde la fecha de elaboración.',
-      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
-    },
-    {
-      id: 32,
-      slug: 'yogurtlab-cultivo-probiotico-5-sachets',
-      nombre: 'Yogurtlab – Cultivo Probiótico para Elaboración de Yogurt x 5 sachets',
-      laboratorio: 'PRANALAB LABORATORIOS CHILE',
-      principioActivo: '4 Cepas Probióticas Microencapsuladas (1x10⁹ UFC/g)',
-      categoria: 'Cuidado Digestivo',
-      formaFarmaceutica: 'Sachets',
-      imagenes: [
-        '/assets/images/products/yogurlab-probioticos-5-sachets.png',
-        '/assets/images/products/yogurlab-probioticos-5-sachets-pack.jpg'
-      ],
-      composicion: 'Maltodextrina de maíz, Mezcla de microorganismos probióticos (Lactobacillus johnsonii, Lactobacillus casei, Lactobacillus bulgaricus, Streptococcus thermophilus). Concentración Probiótica: Potencia mínima de 1 x 10⁹ UFC/g (1 mil millones de UFC por gramo).',
-      presentacion: 'Caja con 5 sachets individuales de 1 g (Rinde 5 Litros)',
-      posologia: '1 sachet para elaborar 1 litro de leche animal o 500 ml de bebida vegetal.',
-      clasificacion: 'venta-directa',
-      nuevo: true,
-      destacado: true,
-      descripcionCorta: 'Fermento probiótico en polvo con 4 cepas microencapsuladas para preparar yogurt casero natural, fresco y altamente nutritivo. Rinde hasta 5 litros.',
-      descripcionParrafos: [
-        'Yogurtlab es un fermento probiótico en polvo diseñado para elaborar en casa un yogurt natural, fresco y altamente nutritivo. Su combinación de cepas fermentativas activas y bacterias probióticas microencapsuladas permite obtener una bebida o crema fermentada que apoya la salud digestiva, colabora en el equilibrio de la microbiota y refuerza el sistema inmunitario.',
-        'Elaboración Natural y Personalizada: Permite preparar yogurt fresco sin conservantes, colorantes ni azúcares añadidos, adaptándolo al tipo de leche de su preferencia (entera, descremada o semidescremada) o bebida vegetal (soja, almendra, avena, entre otras).',
-        'Soporte Digestivo y Flora Intestinal: La acción de sus bacterias lácticas y probióticas contribuye a la salud del tracto gastrointestinal, favoreciendo una mejor digestión de la lactosa y un óptimo confort digestivo.',
-        'Refuerzo Inmunológico: Su aporte continuo de microorganismos benéficos colabora en la protección de la mucosa intestinal y apoya el funcionamiento normal del sistema inmune.',
-        'Alta Concentración de Cultivos Activos: Aporta un perfil concentrado de cepas viables microencapsuladas (potencia mínima de 1 x 10⁹ UFC/g) que aseguran una fermentación óptima y una alta densidad probiótica por porción.',
-        'Apto para Toda la Familia: Alternativa versátil y nutritiva idónea para incorporar microorganismos benéficos en la alimentación diaria de niños y adultos.'
-      ],
-      contenido: 'Caja con 5 sachets de 1 g (Contenido neto: 5 g - Rinde 5 L)',
-      modoUso: '1 sachet para elaborar 1 litro de leche de origen animal o 500 ml de bebida vegetal. Mezclar el contenido del sachet con la leche tibia (aprox. 40°C - 45°C) e incubar de 8 a 12 horas en yogurtera, termo o recipiente cubierto en un ambiente cálido.',
-      vencimiento: '18 meses desde la fecha de elaboración.',
-      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
     },
     {
       id: 33,
@@ -1248,6 +1215,229 @@ export class ProductsService {
       modoUso: 'Consumir 1 a 2 cápsulas al día con abundante agua, preferentemente junto a una comida principal, o según indicación profesional.',
       vencimiento: '24 meses desde la fecha de elaboración.',
       almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 41,
+      slug: 'gummies-creatina-frutas-tropicales-30-gomitas',
+      nombre: 'Gummies Creatina Sabor Frutas Tropicales x 30 gomitas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Creatina Monohidrato (Gomitas Masticables)',
+      categoria: 'Nutrición Deportiva y Energía',
+      formaFarmaceutica: 'Gomitas',
+      imagenes: [
+        '/assets/images/products/gummies-creatina-30-gomitas.jpg'
+      ],
+      composicion: 'Creatina Monohidrato. Base de gomita: Jarabe de glucosa, azúcar, agua purificada, gelatina, pectina, ácido cítrico, aromatizante idéntico a natural frutas tropicales, colorantes naturales.',
+      presentacion: 'Frasco transparente con tapa de seguridad (30 gomitas masticables)',
+      posologia: 'Consumir de 1 a 2 gomitas al día, preferentemente antes o después del entrenamiento físico, acompañadas de suficiente agua, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Gomitas masticables sabor Frutas Tropicales con Creatina para optimizar el rendimiento físico en ejercicios de alta intensidad, fuerza y energía muscular.',
+      descripcionParrafos: [
+        'Gummies Creatina de Pranalab ofrece un formato innovador, práctico y de agradable sabor a Frutas Tropicales para la suplementación diaria de creatina. Diseñadas para deportistas y personas con un estilo de vida activo, estas gomitas masticables apoyan el rendimiento físico en series consecutivas de ejercicios breves de alta intensidad, optimizan la disponibilidad de energía muscular y favorecen la fuerza muscular.',
+        'Mejora del Rendimiento Físico: La creatina mejora el rendimiento físico en series sucesivas de ejercicios breves de alta intensidad, siendo un soporte clave para entrenamientos de fuerza, potencia o velocidad.',
+        'Aumento de la Fuerza y Potencia Muscular: Contribuye al incremento de la masa libre de grasa y al desarrollo de la fuerza muscular cuando se combina con un programa regular de entrenamiento de resistencia.',
+        'Soporte de la Regeneración Energética (ATP): Favorece la resíntesis de fosfocreatina a nivel celular, ayudando a retrasar la fatiga muscular durante el esfuerzo físico.',
+        'Formato Práctico y De Fácil Consumo: Gomitas masticables que eliminan la necesidad de mezclar polvos o tomar cápsulas grandes, facilitando la adherencia diaria a la suplementación.',
+        'Advertencias y Precauciones: Su uso no es recomendable para menores de 15 años, en embarazo ni lactancia. Mantener fuera del alcance de los niños.'
+      ],
+      contenido: 'Frasco transparente con 30 gomitas',
+      modoUso: 'Consumir de 1 a 2 gomitas al día, preferentemente antes o después del entrenamiento físico, acompañadas de suficiente agua.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz solar directa y del calor para preservar la textura de las gomitas. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 42,
+      slug: 'gummies-colageno-plus-vitamina-c-berries-30-gomitas',
+      nombre: 'Gummies Colágeno+ + Vitamina C Sabor Berries x 30 gomitas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Colágeno Hidrolizado + Vitamina C (Gomitas Masticables sabor Berries)',
+      categoria: 'Salud Articular y Piel',
+      formaFarmaceutica: 'Gomitas',
+      imagenes: [
+        '/assets/images/products/gummies-colageno-plus-30-gomitas.jpg'
+      ],
+      composicion: 'Colágeno Hidrolizado, Ácido Ascórbico (Vitamina C). Base de gomita: Jarabe de glucosa, azúcar, agua purificada, gelatina, pectina, ácido cítrico, aromatizante idéntico a natural berries, colorantes naturales.',
+      presentacion: 'Frasco transparente con sello de seguridad (30 gomitas masticables)',
+      posologia: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Gomitas masticables sabor Berries con Colágeno Hidrolizado y Vitamina C para favorecer la síntesis de colágeno, hidratación de la piel y bienestar articular.',
+      descripcionParrafos: [
+        'Gummies Colágeno+ de Pranalab combina Colágeno Hidrolizado y Vitamina C en un formato masticable de agradable sabor a Berries. Esta combinación de nutrientes aporta al proceso natural de formación de colágeno, colabora con el cuidado de la apariencia y sensación de firmeza de la piel, y apoya el bienestar articular y la protección celular.',
+        'Soporte en la Formación de Colágeno: La Vitamina C contribuye al funcionamiento normal del organismo en la producción de colágeno, colaborando con el mantenimiento adecuado de la piel, cartílagos, huesos, encías y vasos sanguíneos.',
+        'Aporte al Cuidado de la Piel: Favorece la hidratación, flexibilidad y aspecto saludable de los tejidos cutáneos, acompañando el cuidado diario de la piel frente a factores ambientales.',
+        'Acompañamiento en Tejidos Conectivos y Movilidad: Colabora con la nutrición de las estructuras articulares, cartílagos y ligamentos, favoreciendo el bienestar en la movilidad diaria.',
+        'Protección Antioxidante: Aporta nutrientes que ayudan a la protección celular frente a la acción de los radicales libres.',
+        'Formato Práctico y Agradable: Ofrece una alternativa cómoda y fácil de incorporar en la rutina diaria para quienes buscan complementar su nutrición sin requerir agua ni ingerir cápsulas tradicionales.',
+        'Advertencias y Precauciones: Su uso no es recomendable para menores de 8 años, embarazadas y nodrizas, salvo indicación profesional competente y no reemplaza una alimentación balanceada. Mantener fuera del alcance de los niños.'
+      ],
+      contenido: 'Frasco transparente con 30 gomitas masticables',
+      modoUso: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa y del calor para evitar la alteración de la consistencia de las gomitas. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 43,
+      slug: 'gummies-biotina-plus-berries-30-gomitas',
+      nombre: 'Gummies Biotina Plus Sabor Berries x 30 gomitas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Biotina (Vitamina B7 / B8 - Gomitas Masticables sabor Berries)',
+      categoria: 'Vitaminas y Suplementos',
+      formaFarmaceutica: 'Gomitas',
+      imagenes: [
+        '/assets/images/products/gummies-biotina-plus-30-gomitas.jpg'
+      ],
+      composicion: 'Biotina (D-Biotina / Vitamina B7). Base de gomita: Jarabe de glucosa, azúcar, agua purificada, gelatina, pectina, ácido cítrico, aromatizante idéntico a natural berries, colorantes naturales.',
+      presentacion: 'Frasco transparente con sello de seguridad (30 gomitas masticables)',
+      posologia: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Gomitas masticables sabor Berries con Biotina concentrada para el soporte nutricional, fortaleza y vitalidad del cabello, piel y uñas.',
+      descripcionParrafos: [
+        'Gummies Biotina Plus de Pranalab ofrece un aporte concentrado de biotina en un práctico y delicioso formato masticable con sabor a Berries. Su fórmula está orientada a brindar soporte nutricional que colabora activamente con el mantenimiento, fortaleza y vitalidad natural del cabello, la piel y las uñas.',
+        'Soporte para la Salud Capilar: La biotina contribuye al mantenimiento del cabello en condiciones normales, favoreciendo su resistencia y apariencia saludable de manera progresiva.',
+        'Cuidado y Fortalecimiento de las Uñas: Aporta nutrientes que colaboran en el mantenimiento de la estructura de las uñas, ayudando a prevenir la fragilidad y promoviendo su fuerza natural.',
+        'Aporte al Mantenimiento Cutáneo: Favorece el equilibrio y la vitalidad de la piel, apoyando los procesos metabólicos que intervienen en el cuidado diario de los tejidos cutáneos.',
+        'Acompañamiento en el Metabolismo Energético: La biotina es un cofactor esencial que participa en el metabolismo normal de los macronutrientes, ayudando a transformar los alimentos en energía útil para el organismo.',
+        'Formato Práctico y Masticable: Permite incorporar los beneficios de la biotina a la rutina diaria de forma agradable, fácil y sin necesidad de acompañar con agua.',
+        'Advertencias y Precauciones: Su uso no es recomendable para menores de 8 años, embarazadas y nodrizas, salvo indicación profesional competente y no reemplaza una alimentación balanceada. Mantener fuera del alcance de los niños.'
+      ],
+      contenido: 'Frasco transparente con 30 gomitas masticables',
+      modoUso: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa y del calor para evitar la alteración de la consistencia de las gomitas. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 44,
+      slug: 'gummies-multivitaminico-forte-probioticos-berries-30-gomitas',
+      nombre: 'Gummies Multivitamínico Forte + Probióticos Sabor Berries x 30 gomitas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Complejo Multivitamínico + Probióticos (Gomitas Masticables sabor Berries)',
+      categoria: 'Vitaminas y Suplementos',
+      formaFarmaceutica: 'Gomitas',
+      imagenes: [
+        '/assets/images/products/gummies-multivitaminico-forte-probioticos-30-gomitas.jpg'
+      ],
+      composicion: 'Complejo vitamínico (Vitaminas A, C, D3, E, B1, B2, B3, B6, B12, Ácido Fólico, Biotina), Mezcla de cepas probióticas (Lactobacillus acidophilus, Bifidobacterium lactis). Base de gomita: Jarabe de glucosa, azúcar, agua purificada, gelatina, pectina, ácido cítrico, aromatizante idéntico a natural berries, colorantes naturales.',
+      presentacion: 'Frasco transparente con sello de seguridad (30 gomitas masticables)',
+      posologia: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Gomitas masticables sabor Berries con Complejo Multivitamínico y Probióticos para soporte inmunitario, bienestar digestivo y vitalidad diaria.',
+      descripcionParrafos: [
+        'Gummies Multivitamínico Forte + Probióticos de Pranalab ofrece una fórmula integral en un conveniente formato masticable con delicioso sabor a Berries. Combina un espectro de vitaminas esenciales con probióticos para aportar al equilibrio nutricional, colaborar con el bienestar intestinal y respaldar la vitalidad del organismo en el día a día.',
+        'Soporte al Sistema Inmune: Su aporte de vitaminas esenciales contribuye al funcionamiento normal del sistema inmunológico, favoreciendo las defensas naturales del cuerpo.',
+        'Aporte al Bienestar Digestivo e Intestinal: La adición de probióticos colabora en el mantenimiento del equilibrio de la microbiota intestinal, promoviendo una digestión confortable y el correcto aprovechamiento de los nutrientes.',
+        'Respaldo Energético y Vitalidad: Las vitaminas del complejo participante ayudan a reducir la sensación de cansancio y fatiga, apoyando los procesos metabólicos normales para la obtención de energía.',
+        'Protección Celular y Equilibrio Nutricional: Aporta nutrientes con acción antioxidante que ayudan a proteger a las células frente al estrés oxidativo, complementando la alimentación diaria.',
+        'Formato Masticable y Práctico: Brinda una forma agradable, práctica y de fácil digestión para incorporar vitaminas y cultivos probióticos sin necesidad de agua o cápsulas duras.',
+        'Advertencias y Precauciones: Su uso no es recomendable para menores de 8 años, embarazadas y nodrizas, salvo indicación profesional competente y no reemplaza una alimentación balanceada. Mantener fuera del alcance de los niños.'
+      ],
+      contenido: 'Frasco transparente con 30 gomitas masticables',
+      modoUso: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa y del calor para evitar la alteración de la consistencia de las gomitas. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 45,
+      slug: 'gummies-melena-de-leon-berries-30-gomitas',
+      nombre: 'Gummies Melena de León Sabor Berries x 30 gomitas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Extracto de Hongo Melena de León (Hericium erinaceus - Gomitas Masticables sabor Berries)',
+      categoria: 'Salud Cognitiva y Adaptógenos',
+      formaFarmaceutica: 'Gomitas',
+      imagenes: [
+        '/assets/images/products/gummies-melena-de-leon-30-gomitas.jpg'
+      ],
+      composicion: 'Extracto de Hongo Melena de León (Hericium erinaceus). Base de gomita: Jarabe de glucosa, azúcar, agua purificada, gelatina, pectina, ácido cítrico, aromatizante idéntico a natural berries, colorantes naturales.',
+      presentacion: 'Frasco transparente con sello de seguridad (30 gomitas masticables)',
+      posologia: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Gomitas masticables sabor Berries con extracto de hongo funcional Melena de León (Hericium erinaceus) para soporte cognitivo, concentración y memoria.',
+      descripcionParrafos: [
+        'Gummies Melena de León de Pranalab ofrece las propiedades del hongo funcional Hericium erinaceus en un práctico y delicioso formato masticable sabor Berries. Su fórmula está diseñada para brindar un soporte nutricional que colabora con el rendimiento mental, favorece la concentración y apoya la claridad en la rutina diaria.',
+        'Soporte a la Función Cognitiva: El hongo Melena de León aporta bioactivos naturales que colaboran con el mantenimiento de la memoria, la agilidad mental y el enfoque diario.',
+        'Aporte a la Concentración y Claridad Mental: Favorece los procesos de atención y aprendizaje, acompañando jornadas de alta exigencia intelectual o laboral.',
+        'Acompañamiento del Sistema Nervioso: Sus componentes naturales contribuyen al equilibrio del sistema nervioso, promoviendo una sensación de bienestar general frente al estrés cotidiano.',
+        'Protección y Bienestar Integral: Contribuye con propiedades antioxidantes naturales que apoyan la protección celular y el buen funcionamiento del organismo.',
+        'Formato Práctico y Masticable: Permite incorporar los beneficios de los hongos funcionales a la rutina diaria de forma agradable, fácil y sin la necesidad de tomar extractos amargos o cápsulas.',
+        'Advertencias y Precauciones: Su uso no es recomendable para menores de 8 años, embarazadas y nodrizas, salvo indicación profesional competente y no reemplaza una alimentación balanceada. Mantener fuera del alcance de los niños.'
+      ],
+      contenido: 'Frasco transparente con 30 gomitas masticables',
+      modoUso: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa y del calor para evitar la alteración de la consistencia de las gomitas. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 46,
+      slug: 'gummies-vinagre-de-manzana-30-gomitas',
+      nombre: 'Gummies Vinagre de Manzana Sabor Manzana Verde x 30 gomitas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Vinagre de Manzana con Ácido Acético (Gomitas Masticables sabor Manzana Verde)',
+      categoria: 'Metabolismo y Control de Peso',
+      formaFarmaceutica: 'Gomitas',
+      imagenes: [
+        '/assets/images/products/gummies-vinagre-manzana-30-gomitas.jpg'
+      ],
+      composicion: 'Vinagre de Sidra de Manzana en polvo (con ácido acético natural). Base de gomita: Jarabe de glucosa, azúcar, agua purificada, gelatina, pectina, ácido cítrico, aromatizante idéntico a natural manzana verde, colorantes naturales (clorofila cúprica).',
+      presentacion: 'Frasco transparente con sello de seguridad (30 gomitas masticables)',
+      posologia: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Gomitas masticables sabor Manzana Verde con Vinagre de Manzana para acompañar el bienestar digestivo, metabolismo y sensación de saciedad.',
+      descripcionParrafos: [
+        'Gummies Vinagre de Manzana de Pranalab ofrece todos los beneficios del vinagre de manzana tradicional en un práctico formato masticable con un refrescante sabor a Manzana Verde. Su fórmula está diseñada para acompañar los procesos digestivos, colaborar en la sensación de saciedad y brindar soporte nutricional al metabolismo en el día a día.',
+        'Aporte al Bienestar Digestivo: Colabora con el proceso digestivo normal, favoreciendo una sensación de ligereza tras las comidas.',
+        'Soporte en el Metabolismo: El ácido acético presente de forma natural en el vinagre de manzana contribuye al metabolismo de macronutrientes, acompañando planes de alimentación equilibrados.',
+        'Acompañamiento en el Control de la Saciedad: Aporta a la sensación de saciedad, siendo un complemento útil dentro de rutinas orientadas al cuidado del peso corporal.',
+        'Protección y Equilibrio Corporal: Aporta componentes naturales que ayudan al equilibrio orgánico y a la protección antioxidante de las células.',
+        'Formato Cómodo y Agradable Sabor: Permite disfrutar del vinagre de manzana sin el sabor fuerte o la acidez del formato líquido, cuidando además el esmalte dental.',
+        'Advertencias y Precauciones: Su uso no es recomendable para menores de 8 años, embarazadas y nodrizas, salvo indicación profesional competente y no reemplaza una alimentación balanceada. Mantener fuera del alcance de los niños.'
+      ],
+      contenido: 'Frasco transparente con 30 gomitas masticables',
+      modoUso: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa y del calor para evitar la alteración de la consistencia de las gomitas. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 47,
+      slug: 'gummies-vitamina-c-naranja-30-gomitas',
+      nombre: 'Gummies Vitamina C Sabor Naranja x 30 gomitas',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: 'Vitamina C (Ácido Ascórbico - Gomitas Masticables sabor Naranja)',
+      categoria: 'Vitaminas y Suplementos',
+      formaFarmaceutica: 'Gomitas',
+      imagenes: [
+        '/assets/images/products/gummies-vitamina-c-30-gomitas.jpg'
+      ],
+      composicion: 'Ácido Ascórbico (Vitamina C). Base de gomita: Jarabe de glucosa, azúcar, agua purificada, gelatina, pectina, ácido cítrico, aromatizante idéntico a natural naranja, colorantes naturales (betacaroteno / extracto de pimentón).',
+      presentacion: 'Frasco transparente con sello de seguridad (30 gomitas masticables)',
+      posologia: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar, o según indicación profesional.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Gomitas masticables sabor Naranja con Vitamina C para refuerzo inmunológico, protección antioxidante celular y síntesis natural de colágeno.',
+      descripcionParrafos: [
+        'Gummies Vitamina C de Pranalab ofrece una dosis práctica de vitamina C en un agradable formato masticable sabor Naranja. Su fórmula está diseñada para brindar un soporte antioxidante constante, respaldar el funcionamiento normal del sistema inmune y colaborar con el cuidado integral del organismo en el día a día.',
+        'Respaldo al Sistema Inmunológico: La vitamina C contribuye al funcionamiento adecuado de las defensas naturales del organismo, acompañando la respuesta inmune cotidiana.',
+        'Protección Antioxidante Celular: Ayuda a proteger las células frente al daño oxidativo provocado por los radicales libres, promoviendo el bienestar celular.',
+        'Soporte en la Síntesis de Colágeno: Colabora en la formación normal de colágeno, necesario para el mantenimiento adecuado de la piel, encías, vasos sanguíneos, cartílagos y huesos.',
+        'Aporte a la Absorción de Nutrientes: Favorece la absorción del hierro proveniente de los alimentos, colaborando con los niveles de energía y vitalidad diaria.',
+        'Formato Masticable y Refrescante: Ofrece una alternativa agradable y fácil de incorporar en la rutina nutricional diaria, sin requerir agua para su consumo.',
+        'Advertencias y Precauciones: Su uso no es recomendable para menores de 8 años, embarazadas y nodrizas, salvo indicación profesional competente y no reemplaza una alimentación balanceada. Mantener fuera del alcance de los niños.'
+      ],
+      contenido: 'Frasco transparente con 30 gomitas masticables',
+      modoUso: 'Consumir 1 a 2 gomitas al día, masticando completamente antes de tragar.',
+      vencimiento: '24 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa y del calor para evitar la alteración de la consistencia de las gomitas. Mantener fuera del alcance de los niños.'
     }
   ];
 

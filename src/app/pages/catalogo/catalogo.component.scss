@@ -338,16 +338,29 @@
     }
   }
 
-  /* Variante más sutil para Forma Farmacéutica */
-  &--forma {
-    height: 34px;
-    min-height: 34px;
-    font-size: 0.74rem;
-    padding: 0 0.8rem;
+  /* Variante destacada para los 3 filtros principales de línea */
+  &--destacada {
+    height: 44px;
+    min-height: 44px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    padding: 0 1.25rem;
+    border-radius: var(--radio-pildora);
+    letter-spacing: 0.03em;
 
     @media (max-width: 600px) {
-      min-height: 40px;
-      font-size: 0.72rem;
+      min-height: 44px;
+      font-size: 0.78rem;
+      padding: 0 1rem;
+      flex: 1 1 auto;
+      justify-content: center;
+    }
+
+    .filtro-btn-pildora__badge {
+      min-width: 1.5rem;
+      height: 1.5rem;
+      font-size: 0.76rem;
+      padding: 0 0.45rem;
     }
   }
 

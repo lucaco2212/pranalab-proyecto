@@ -27,11 +27,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   readonly productosDestacados: Product[] = this.productsService.getDestacadosHome();
 
   readonly filtrosRapidos = [
-    { label: 'Cápsulas', queryParam: 'Cápsulas' },
-    { label: 'Comprimidos', queryParam: 'Comprimidos' },
-    { label: 'Jarabes', queryParam: 'Jarabes' },
-    { label: 'Sachets', queryParam: 'Sachets' },
-    { label: 'Geles y Cremas', queryParam: 'Geles y Cremas' }
+    { label: 'Vitaminas y Minerales', queryParam: 'vitaminas-y-minerales' },
+    { label: 'Jarabes y Spray', queryParam: 'jarabes-y-spray' },
+    { label: 'Gomitas', queryParam: 'gomitas' }
   ];
 
   readonly recomendaciones: RecomendacionItem[] = [
@@ -50,11 +48,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       badge: 'Fórmula Plus'
     },
     {
-      id: 32,
-      nombre: 'Yogurtlab Probióticos',
-      subtitulo: 'Fermento probiótico en polvo con 4 cepas microencapsuladas para preparar yogurt casero natural y nutritivo.',
-      imagen: '/assets/images/products/yogurlab-probioticos-5-sachets.png',
-      badge: 'Cultivo Probiótico'
+      id: 22,
+      nombre: 'Minilab Multivitamínico Jarabe 125 ml',
+      subtitulo: 'Fórmula líquida multivitamínica de fácil absorción con delicioso sabor frambuesa-miel para apoyar el crecimiento y vitalidad.',
+      imagen: '/assets/images/products/minilab-multivitaminico-jarabe.jpg',
+      badge: 'Multivitamínico Jarabe'
     },
     {
       id: 34,

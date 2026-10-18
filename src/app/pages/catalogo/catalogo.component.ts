@@ -4,13 +4,9 @@ import {
   OnInit,
   OnDestroy,
   signal,
-  computed,
-  PLATFORM_ID,
-  ElementRef,
-  ViewChild,
-  HostListener
+  computed
 } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductsService } from '../../core/products.service';
@@ -18,8 +14,11 @@ import { ProductCardComponent } from '../../shared/product-card/product-card.com
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 import { Product } from '../../core/models/product.model';
 
-export interface OpcionFiltro {
-  valor: string;
+export type TipoFiltro = 'vitaminas-y-minerales' | 'jarabes-y-spray' | 'gomitas';
+
+export interface OpcionFiltroLinea {
+  id: TipoFiltro;
+  label: string;
   conteo: number;
   deshabilitada: boolean;
 }
@@ -35,88 +34,57 @@ export class CatalogoComponent implements OnInit, OnDestroy {
   private readonly productsService = inject(ProductsService);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
-  private readonly platformId = inject(PLATFORM_ID);
   private querySub?: Subscription;
 
-  // Lista base de productos y opciones
+  // Lista base de productos
   readonly todosLosProductos = this.productsService.getAll();
-  readonly categorias = this.productsService.getCategorias();
-  readonly formasFarmaceuticas = this.productsService.getFormasFarmaceuticas();
 
   // Signals para el estado de los filtros
   readonly terminoBusqueda = signal<string>('');
-  readonly categoriaSeleccionada = signal<string>('');
-  readonly formaSeleccionada = signal<string>('');
+  readonly filtroSeleccionado = signal<TipoFiltro | ''>('');
 
-  // Opciones de categoría con conteos dinámicos basados en la forma y búsqueda actuales
-  readonly opcionesCategoria = computed<OpcionFiltro[]>(() => {
-    const forma = this.formaSeleccionada();
-    const termino = this.terminoBusqueda().trim().toLowerCase();
+  // Configuración de los 3 filtros solicitados
+  private readonly filtrosConfig: { id: TipoFiltro; label: string }[] = [
+    { id: 'vitaminas-y-minerales', label: 'Vitaminas y Minerales' },
+    { id: 'jarabes-y-spray', label: 'Jarabes y Spray' },
+    { id: 'gomitas', label: 'Gomitas' }
+  ];
 
-    return this.categorias.map(cat => {
+  // Opciones de filtro con conteos dinámicos en tiempo real
+  readonly opcionesFiltro = computed<OpcionFiltroLinea[]>(() => {
+    const termino = this.terminoBusqueda().trim();
+
+    return this.filtrosConfig.map(cfg => {
       const conteo = this.todosLosProductos.filter(p => {
-        if (p.categoria !== cat) return false;
-        if (forma && p.formaFarmaceutica !== forma) return false;
+        if (!this.perteneceAFiltro(p, cfg.id)) return false;
         if (termino && !this.coincideBusqueda(p, termino)) return false;
         return true;
       }).length;
 
       return {
-        valor: cat,
+        id: cfg.id,
+        label: cfg.label,
         conteo,
         deshabilitada: conteo === 0
       };
     });
-  });
-
-  // Opciones de forma farmacéutica con conteos dinámicos basados en la categoría y búsqueda actuales
-  readonly opcionesForma = computed<OpcionFiltro[]>(() => {
-    const categoria = this.categoriaSeleccionada();
-    const termino = this.terminoBusqueda().trim().toLowerCase();
-
-    return this.formasFarmaceuticas.map(forma => {
-      const conteo = this.todosLosProductos.filter(p => {
-        if (p.formaFarmaceutica !== forma) return false;
-        if (categoria && p.categoria !== categoria) return false;
-        if (termino && !this.coincideBusqueda(p, termino)) return false;
-        return true;
-      }).length;
-
-      return {
-        valor: forma,
-        conteo,
-        deshabilitada: conteo === 0
-      };
-    });
-  });
-
-  // Verifica si hay al menos un filtro de botón activo
-  readonly hayFiltrosBotonesActivos = computed(() => {
-    return this.categoriaSeleccionada() !== '' || this.formaSeleccionada() !== '';
   });
 
   // Signal computado para verificar si hay algún filtro activo (incluyendo búsqueda)
   readonly hayFiltrosActivos = computed(() => {
-    return (
-      this.hayFiltrosBotonesActivos() ||
-      this.terminoBusqueda().trim() !== ''
-    );
+    return this.filtroSeleccionado() !== '' || this.terminoBusqueda().trim() !== '';
   });
 
-  // Signal computado principal: combina búsqueda en tiempo real + categoría + forma
+  // Signal computado principal: combina filtro de línea + búsqueda normalizada
   readonly productosFiltrados = computed<Product[]>(() => {
-    const termino = this.terminoBusqueda().trim().toLowerCase();
-    const categoria = this.categoriaSeleccionada();
-    const forma = this.formaSeleccionada();
+    const termino = this.terminoBusqueda().trim();
+    const filtro = this.filtroSeleccionado();
 
     return this.todosLosProductos.filter(producto => {
+      if (filtro && !this.perteneceAFiltro(producto, filtro)) {
+        return false;
+      }
       if (termino && !this.coincideBusqueda(producto, termino)) {
-        return false;
-      }
-      if (categoria && producto.categoria !== categoria) {
-        return false;
-      }
-      if (forma && producto.formaFarmaceutica !== forma) {
         return false;
       }
       return true;
@@ -129,16 +97,23 @@ export class CatalogoComponent implements OnInit, OnDestroy {
       if (params['buscar'] !== undefined) {
         this.terminoBusqueda.set(params['buscar'] || '');
       }
-      if (params['categoria'] && params['categoria'] !== 'todas') {
-        this.categoriaSeleccionada.set(params['categoria']);
-      } else {
-        this.categoriaSeleccionada.set('');
-      }
 
-      if (params['forma'] && params['forma'] !== 'todas') {
-        this.formaSeleccionada.set(params['forma']);
+      const filtroParam = (params['filtro'] || params['linea'] || '').toLowerCase();
+      if (filtroParam === 'vitaminas-y-minerales' || filtroParam === 'jarabes-y-spray' || filtroParam === 'gomitas') {
+        this.filtroSeleccionado.set(filtroParam as TipoFiltro);
+      } else if (params['forma']) {
+        const formaNorm = params['forma'].toLowerCase();
+        if (formaNorm.includes('gomi')) {
+          this.filtroSeleccionado.set('gomitas');
+        } else if (formaNorm.includes('jara') || formaNorm.includes('spray')) {
+          this.filtroSeleccionado.set('jarabes-y-spray');
+        } else if (formaNorm.includes('capsul') || formaNorm.includes('sachet')) {
+          this.filtroSeleccionado.set('vitaminas-y-minerales');
+        } else {
+          this.filtroSeleccionado.set('');
+        }
       } else {
-        this.formaSeleccionada.set('');
+        this.filtroSeleccionado.set('');
       }
     });
   }
@@ -159,47 +134,74 @@ export class CatalogoComponent implements OnInit, OnDestroy {
     this.actualizarUrl();
   }
 
-  // Métodos de interacción con los botones de filtro
-  toggleCategoria(categoria: string, deshabilitada: boolean): void {
+  // Métodos de interacción con los 3 botones de filtro
+  toggleFiltro(filtro: TipoFiltro, deshabilitada: boolean): void {
     if (deshabilitada) return;
-    this.categoriaSeleccionada.update(actual => actual === categoria ? '' : categoria);
+    this.filtroSeleccionado.update(actual => actual === filtro ? '' : filtro);
     this.actualizarUrl();
   }
 
-  toggleForma(forma: string, deshabilitada: boolean): void {
-    if (deshabilitada) return;
-    this.formaSeleccionada.update(actual => actual === forma ? '' : forma);
+  limpiarFiltro(): void {
+    this.filtroSeleccionado.set('');
     this.actualizarUrl();
   }
 
-  // Restablece ambos filtros de botones
-  limpiarFiltros(): void {
-    this.categoriaSeleccionada.set('');
-    this.formaSeleccionada.set('');
-    this.actualizarUrl();
-  }
-
-  // Restablece todos los filtros incluyendo búsqueda
   limpiarTodosLosFiltros(): void {
     this.terminoBusqueda.set('');
-    this.categoriaSeleccionada.set('');
-    this.formaSeleccionada.set('');
+    this.filtroSeleccionado.set('');
     this.actualizarUrl();
   }
 
+  // Normalizador de texto para omitir tildes y mayúsculas
+  private normalizarTexto(texto: string): string {
+    return texto
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+  }
 
   private coincideBusqueda(producto: Product, termino: string): boolean {
-    const coincideNombre = producto.nombre.toLowerCase().includes(termino);
-    const coincidePrincipio = producto.principioActivo?.toLowerCase().includes(termino) ?? false;
-    const coincideDesc = producto.descripcionCorta.toLowerCase().includes(termino);
-    return coincideNombre || coincidePrincipio || coincideDesc;
+    const terminoNorm = this.normalizarTexto(termino);
+    const coincideNombre = this.normalizarTexto(producto.nombre).includes(terminoNorm);
+    const coincidePrincipio = producto.principioActivo
+      ? this.normalizarTexto(producto.principioActivo).includes(terminoNorm)
+      : false;
+    const coincideDesc = this.normalizarTexto(producto.descripcionCorta).includes(terminoNorm);
+    const coincideCategoria = this.normalizarTexto(producto.categoria).includes(terminoNorm);
+    const coincideForma = this.normalizarTexto(producto.formaFarmaceutica).includes(terminoNorm);
+    return coincideNombre || coincidePrincipio || coincideDesc || coincideCategoria || coincideForma;
+  }
+
+  // Clasificación de productos en los 3 filtros
+  private perteneceAFiltro(producto: Product, filtro: TipoFiltro): boolean {
+    const forma = producto.formaFarmaceutica.toLowerCase();
+    const nombre = producto.nombre.toLowerCase();
+
+    switch (filtro) {
+      case 'gomitas':
+        return forma === 'gomitas' || nombre.includes('gummies') || nombre.includes('gomitas');
+      case 'jarabes-y-spray':
+        return forma === 'jarabes' || nombre.includes('jarabe') || nombre.includes('spray');
+      case 'vitaminas-y-minerales':
+        return (
+          forma !== 'gomitas' &&
+          forma !== 'jarabes' &&
+          !nombre.includes('gummies') &&
+          !nombre.includes('gomitas') &&
+          !nombre.includes('jarabe') &&
+          !nombre.includes('spray')
+        );
+    }
   }
 
   private actualizarUrl(): void {
     const queryParams: Record<string, string | null> = {
+      categoria: null,
+      forma: null,
       clasificacion: null,
       nuevo: null,
-      destacado: null
+      destacado: null,
+      linea: null
     };
 
     if (this.terminoBusqueda().trim()) {
@@ -208,16 +210,10 @@ export class CatalogoComponent implements OnInit, OnDestroy {
       queryParams['buscar'] = null;
     }
 
-    if (this.categoriaSeleccionada()) {
-      queryParams['categoria'] = this.categoriaSeleccionada();
+    if (this.filtroSeleccionado()) {
+      queryParams['filtro'] = this.filtroSeleccionado();
     } else {
-      queryParams['categoria'] = null;
-    }
-
-    if (this.formaSeleccionada()) {
-      queryParams['forma'] = this.formaSeleccionada();
-    } else {
-      queryParams['forma'] = null;
+      queryParams['filtro'] = null;
     }
 
     this.router.navigate([], {
