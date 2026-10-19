@@ -273,6 +273,58 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
       margin-top: 0.25rem;
       line-height: 1.45;
     }
+
+    /* Optimización Móvil (<= 767px) */
+    @media (max-width: 767px) {
+      .seccion-contacto {
+        padding: 2rem 0 3rem 0 !important;
+        min-height: auto !important;
+      }
+
+      .contacto-encabezado {
+        margin-bottom: 1.35rem !important;
+      }
+
+      .contacto-encabezado__titulo {
+        font-size: 1.75rem !important;
+        margin-bottom: 0.35rem !important;
+      }
+
+      .contacto-encabezado__subtitulo {
+        font-size: 0.88rem !important;
+        line-height: 1.45 !important;
+      }
+
+      .contacto-grid {
+        gap: 0.75rem !important;
+      }
+
+      .contacto-canal {
+        padding: 1.1rem 0.85rem !important;
+        border-radius: 12px !important;
+      }
+
+      .contacto-canal__icono {
+        width: 44px !important;
+        height: 44px !important;
+      }
+
+      .contacto-canal__icono svg {
+        width: 22px !important;
+        height: 22px !important;
+      }
+
+      .contacto-canal__valor {
+        font-size: 1.05rem !important;
+        min-height: 44px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+      }
+
+      .contacto-canal__desc {
+        font-size: 0.78rem !important;
+      }
+    }
   `]
 })
 export class ContactoComponent {}

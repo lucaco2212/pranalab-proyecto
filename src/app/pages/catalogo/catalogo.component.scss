@@ -501,3 +501,74 @@
     }
   }
 }
+
+/* ==========================================================================
+   OPTIMIZACIÓN RESPONSIVA MÓVIL (SOLO <= 767px - ESCRITORIO 100% INTACTO)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .seccion-catalogo {
+    padding: 1.5rem 0 3rem 0 !important;
+  }
+
+  .catalogo-encabezado {
+    margin-bottom: 1.25rem !important;
+
+    &__titulo {
+      font-size: 1.65rem !important;
+      margin-bottom: 0.4rem !important;
+    }
+
+    &__subtitulo {
+      font-size: 0.88rem !important;
+      line-height: 1.45 !important;
+      margin-bottom: 1.25rem !important;
+    }
+  }
+
+  .catalogo-buscador {
+    margin-bottom: 0.5rem !important;
+
+    &__caja {
+      padding: 0.35rem 0.65rem 0.35rem 0.95rem !important;
+    }
+
+    &__input {
+      font-size: 0.88rem !important;
+    }
+  }
+
+  .catalogo-filtros-bar {
+    gap: 0.65rem !important;
+    margin-bottom: 1.35rem !important;
+
+    &__meta {
+      gap: 0.5rem !important;
+    }
+
+    &__titulo {
+      font-size: 0.76rem !important;
+    }
+
+    &__contador {
+      font-size: 0.78rem !important;
+    }
+
+    &__grupo--tres {
+      gap: 0.45rem !important;
+    }
+  }
+
+  .filtro-btn-pildora--destacada {
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 0 0.85rem !important;
+    font-size: 0.76rem !important;
+  }
+
+  /* Catálogo en 2 columnas compactas en móvil */
+  .catalogo-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
+  }
+}
+

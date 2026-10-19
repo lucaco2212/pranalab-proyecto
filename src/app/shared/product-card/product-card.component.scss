@@ -221,3 +221,86 @@
     box-shadow: 0 4px 10px rgba(101, 179, 46, 0.25);
   }
 }
+
+/* ==========================================================================
+   OPTIMIZACIÓN RESPONSIVA MÓVIL (SOLO <= 767px - ESCRITORIO 100% INTACTO)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .tarjeta-producto {
+    padding: 0.75rem 0.6rem !important;
+    border-radius: 10px !important;
+
+    /* 4. Imagen cuadrada (aspect-ratio: 1/1; object-fit: contain) */
+    &__visual {
+      aspect-ratio: 1 / 1 !important;
+      min-height: auto !important;
+      height: auto !important;
+      padding: 0.45rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    &__img {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: none !important;
+      aspect-ratio: 1 / 1 !important;
+      object-fit: contain !important;
+    }
+
+    &__meta {
+      gap: 0.25rem !important;
+      margin-bottom: 0.25rem !important;
+    }
+
+    &__categoria {
+      font-size: 0.65rem !important;
+    }
+
+    &__principio {
+      font-size: 0.62rem !important;
+      padding: 0.1rem 0.35rem !important;
+    }
+
+    &__nombre {
+      font-size: 0.85rem !important;
+      line-height: 1.25 !important;
+      margin-bottom: 0.3rem !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+      min-height: 2.15rem !important;
+    }
+
+    /* Descripción limitada a 2 líneas */
+    &__descripcion {
+      font-size: 0.72rem !important;
+      line-height: 1.35 !important;
+      margin-bottom: 0.5rem !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+
+    /* Ocultar filas de Presentación y Contenido solo en móvil */
+    &__datos-tecnicos {
+      display: none !important;
+    }
+
+    &__pie {
+      margin-top: auto !important;
+    }
+
+    &__boton {
+      padding: 0.5rem 0.5rem !important;
+      font-size: 0.74rem !important;
+      min-height: 38px !important;
+
+      svg {
+        display: none !important;
+      }
+    }
+  }
+}
+

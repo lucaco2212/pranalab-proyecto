@@ -344,6 +344,7 @@
   .pie-sello-icono {
     color: #65b32e;
     flex-shrink: 0;
+
     svg {
       width: 40px;
       height: 40px;
@@ -398,5 +399,113 @@
     background-color: var(--color-blanco);
     color: #0b6b3a;
     transform: scale(1.1);
+  }
+}
+
+/* ==========================================================================
+   OPTIMIZACIÓN RESPONSIVA MÓVIL (SOLO <= 767px - ESCRITORIO 100% INTACTO)
+   ========================================================================== */
+@media (max-width: 767px) {
+
+  /* 9. Pie de página: columnas compactas y táctiles */
+  .pie-pagina {
+    &__contenedor {
+      padding: 2.25rem 1rem 1.75rem 1rem !important;
+      gap: 1.65rem !important;
+    }
+
+    &__logo {
+      margin-bottom: 1rem !important;
+    }
+
+    .pie-logo-caja {
+      padding: 0.5rem 1rem !important;
+    }
+
+    .pie-logo-img {
+      height: 48px !important;
+      max-width: 170px !important;
+    }
+
+    &__descripcion {
+      font-size: 0.86rem !important;
+      line-height: 1.45 !important;
+      margin-bottom: 1rem !important;
+    }
+
+    &__titulo {
+      font-size: 1.05rem !important;
+      margin-bottom: 0.85rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+
+    &__lista {
+      gap: 0.5rem !important;
+    }
+
+    &__enlace {
+      font-size: 0.88rem !important;
+      padding: 0.25rem 0 !important;
+      min-height: 38px !important;
+    }
+
+    &__contacto-lista {
+      gap: 0.65rem !important;
+    }
+
+    &__contacto-item {
+      font-size: 0.88rem !important;
+    }
+
+    &__contacto-enlace {
+      font-size: 0.92rem !important;
+      min-height: 44px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+    }
+
+    .pie-sello-certificacion {
+      padding: 0.85rem !important;
+      gap: 0.65rem !important;
+      margin-top: 0.5rem !important;
+    }
+
+    &__inferior {
+      padding: 1rem 0 !important;
+    }
+
+    &__copyright {
+      font-size: 0.76rem !important;
+      text-align: center !important;
+    }
+  }
+
+  /* 10. Botón flotante de WhatsApp visible solo en móvil, abajo a la derecha, 56px, z-index alto */
+  .btn-flotante-whatsapp {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 50% !important;
+    background-color: #25d366 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45) !important;
+    z-index: 9999 !important;
+    text-decoration: none !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
+
+    &:active {
+      transform: scale(0.92) !important;
+    }
+
+    svg {
+      width: 30px !important;
+      height: 30px !important;
+    }
   }
 }

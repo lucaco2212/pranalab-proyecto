@@ -964,6 +964,39 @@ export class ProductsService {
       contenido: 'Frasco con 30 cápsulas',
       modoUso: 'Consumir 1 cápsula al día con un vaso de agua, preferentemente por la mañana en ayunas o antes de la comida principal, o según indicación profesional.',
       vencimiento: '18 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
+    },
+    {
+      id: 32,
+      slug: 'yogurtlab-cultivo-probiotico-5-sachets',
+      nombre: 'Yogurtlab – Cultivo Probiótico para Elaboración de Yogurt x 5 sachets',
+      laboratorio: 'PRANALAB LABORATORIOS CHILE',
+      principioActivo: '4 Cepas Probióticas Microencapsuladas (1x10⁹ UFC/g)',
+      categoria: 'Cuidado Digestivo',
+      formaFarmaceutica: 'Sachets',
+      imagenes: [
+        '/assets/images/products/yogurlab-probioticos-5-sachets.png',
+        '/assets/images/products/yogurlab-probioticos-5-sachets-pack.jpg'
+      ],
+      composicion: 'Maltodextrina de maíz, Mezcla de microorganismos probióticos (Lactobacillus johnsonii, Lactobacillus casei, Lactobacillus bulgaricus, Streptococcus thermophilus). Concentración Probiótica: Potencia mínima de 1 x 10⁹ UFC/g (1 mil millones de UFC por gramo).',
+      presentacion: 'Caja con 5 sachets individuales de 1 g (Rinde 5 Litros)',
+      posologia: '1 sachet para elaborar 1 litro de leche animal o 500 ml de bebida vegetal.',
+      clasificacion: 'venta-directa',
+      nuevo: true,
+      destacado: true,
+      descripcionCorta: 'Fermento probiótico en polvo con 4 cepas microencapsuladas para preparar yogurt casero natural, fresco y altamente nutritivo. Rinde hasta 5 litros.',
+      descripcionParrafos: [
+        'Yogurtlab es un fermento probiótico en polvo diseñado para elaborar en casa un yogurt natural, fresco y altamente nutritivo. Su combinación de cepas fermentativas activas y bacterias probióticas microencapsuladas permite obtener una bebida o crema fermentada que apoya la salud digestiva, colabora en el equilibrio de la microbiota y refuerza el sistema inmunitario.',
+        'Elaboración Natural y Personalizada: Permite preparar yogurt fresco sin conservantes, colorantes ni azúcares añadidos, adaptándolo al tipo de leche de su preferencia (entera, descremada o semidescremada) o bebida vegetal (soja, almendra, avena, entre otras).',
+        'Soporte Digestivo y Flora Intestinal: La acción de sus bacterias lácticas y probióticas contribuye a la salud del tracto gastrointestinal, favoreciendo una mejor digestión de la lactosa y un óptimo confort digestivo.',
+        'Refuerzo Inmunológico: Su aporte continuo de microorganismos benéficos colabora en la protección de la mucosa intestinal y apoya el funcionamiento normal del sistema inmune.',
+        'Alta Concentración de Cultivos Activos: Aporta un perfil concentrado de cepas viables microencapsuladas (potencia mínima de 1 x 10⁹ UFC/g) que aseguran una fermentación óptima y una alta densidad probiótica por porción.',
+        'Apto para Toda la Familia: Alternativa versátil y nutritiva idónea para incorporar microorganismos benéficos en la alimentación diaria de niños y adultos.'
+      ],
+      contenido: 'Caja con 5 sachets de 1 g (Contenido neto: 5 g - Rinde 5 L)',
+      modoUso: '1 sachet para elaborar 1 litro de leche de origen animal o 500 ml de bebida vegetal. Mezclar el contenido del sachet con la leche tibia (aprox. 40°C - 45°C) e incubar de 8 a 12 horas en yogurtera, termo o recipiente cubierto en un ambiente cálido.',
+      vencimiento: '18 meses desde la fecha de elaboración.',
+      almacenamiento: 'Conservar en un lugar fresco y seco, protegido de la luz directa. Mantener fuera del alcance de los niños.'
     },
     {
       id: 33,

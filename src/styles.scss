@@ -345,3 +345,30 @@ img, svg {
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   OPTIMIZACIÓN RESPONSIVA MÓVIL (SOLO <= 767px - ESCRITORIO INTACTO)
+   ========================================================================== */
+@media (max-width: 767px) {
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  /* 1. Reducción de espaciados verticales globales para acortar la página */
+  .seccion {
+    padding: 2rem 0 !important;
+  }
+
+  .contenedor {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* 11. Imágenes y seguridad anti-desbordamiento horizontal */
+  img, svg {
+    max-width: 100% !important;
+  }
+}
+

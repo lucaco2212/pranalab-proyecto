@@ -321,3 +321,75 @@
     }
   }
 }
+
+/* ==========================================================================
+   OPTIMIZACIÓN RESPONSIVA MÓVIL (SOLO <= 767px - ESCRITORIO 100% INTACTO)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .cabecera {
+    &__contenedor {
+      height: 72px !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    &__logo-img {
+      height: 52px !important;
+      max-width: 155px !important;
+    }
+
+    /* Ocultar redes en la barra principal para evitar duplicación con el menú */
+    &__acciones .redes-sociales {
+      display: none !important;
+    }
+  }
+
+  /* 8. Botón hamburguesa visible, accesible y con z-index seguro */
+  .boton-hamburguesa {
+    display: flex !important;
+    width: 44px !important;
+    height: 44px !important;
+    padding: 9px !important;
+    z-index: 1100 !important;
+  }
+
+  /* Menú desplegable móvil */
+  .cabecera__movil {
+    z-index: 1050 !important;
+
+    &-nav {
+      padding: 1rem 1rem 1.35rem !important;
+    }
+
+    &-lista {
+      margin-bottom: 1rem !important;
+      gap: 0.35rem !important;
+    }
+
+    &-enlace {
+      font-size: 0.95rem !important;
+      padding: 0.65rem 0.85rem !important;
+    }
+
+    /* Redes sociales visibles únicamente dentro del menú desplegable */
+    &-redes {
+      padding-top: 0.85rem !important;
+
+      .redes-sociales {
+        display: flex !important;
+        gap: 0.65rem !important;
+      }
+
+      .red-icono {
+        width: 40px !important;
+        height: 40px !important;
+
+        svg {
+          width: 18px !important;
+          height: 18px !important;
+        }
+      }
+    }
+  }
+}
+
