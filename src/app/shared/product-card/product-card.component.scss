@@ -227,60 +227,92 @@
    ========================================================================== */
 @media (max-width: 767px) {
   .tarjeta-producto {
-    padding: 0.75rem 0.6rem !important;
+    padding: 0.55rem 0.5rem !important;
     border-radius: 10px !important;
 
-    /* 4. Imagen cuadrada (aspect-ratio: 1/1; object-fit: contain) */
+    /* Badges compactos y ordenados */
+    &__badges {
+      margin-bottom: 0.35rem !important;
+      gap: 0.2rem !important;
+      flex-wrap: wrap !important;
+
+      &-grupo {
+        gap: 0.2rem !important;
+      }
+    }
+
+    /* Imagen visual compacta sin desperdiciar altura vertical */
     &__visual {
-      aspect-ratio: 1 / 1 !important;
-      min-height: auto !important;
-      height: auto !important;
-      padding: 0.45rem !important;
-      margin-bottom: 0.5rem !important;
+      aspect-ratio: unset !important;
+      height: 112px !important;
+      max-height: 112px !important;
+      min-height: 112px !important;
+      padding: 0.35rem !important;
+      margin-bottom: 0.35rem !important;
+      border-radius: 8px !important;
     }
 
     &__img {
-      width: 100% !important;
-      height: 100% !important;
-      max-height: none !important;
-      aspect-ratio: 1 / 1 !important;
+      max-height: 102px !important;
+      height: 102px !important;
+      width: auto !important;
       object-fit: contain !important;
+      margin: 0 auto !important;
+    }
+
+    &__cuerpo {
+      display: flex !important;
+      flex-direction: column !important;
+      flex-grow: 1 !important;
     }
 
     &__meta {
-      gap: 0.25rem !important;
-      margin-bottom: 0.25rem !important;
+      gap: 0.2rem !important;
+      margin-bottom: 0.2rem !important;
+      flex-wrap: wrap !important;
     }
 
     &__categoria {
-      font-size: 0.65rem !important;
+      font-size: 0.58rem !important;
+      line-height: 1.15 !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 1 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
     }
 
     &__principio {
-      font-size: 0.62rem !important;
-      padding: 0.1rem 0.35rem !important;
+      font-size: 0.56rem !important;
+      line-height: 1.1 !important;
+      padding: 0.08rem 0.3rem !important;
+      border-radius: 4px !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 1 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
     }
 
     &__nombre {
-      font-size: 0.85rem !important;
-      line-height: 1.25 !important;
-      margin-bottom: 0.3rem !important;
+      font-size: 0.8rem !important;
+      line-height: 1.2 !important;
+      margin-bottom: 0.25rem !important;
       display: -webkit-box !important;
       -webkit-line-clamp: 2 !important;
       -webkit-box-orient: vertical !important;
       overflow: hidden !important;
-      min-height: 2.15rem !important;
+      min-height: 1.95rem !important;
     }
 
-    /* Descripción limitada a 2 líneas */
+    /* Descripción compacta a 2 líneas */
     &__descripcion {
-      font-size: 0.72rem !important;
-      line-height: 1.35 !important;
-      margin-bottom: 0.5rem !important;
+      font-size: 0.68rem !important;
+      line-height: 1.25 !important;
+      margin-bottom: 0.35rem !important;
       display: -webkit-box !important;
       -webkit-line-clamp: 2 !important;
       -webkit-box-orient: vertical !important;
       overflow: hidden !important;
+      color: #64748b !important;
     }
 
     /* Ocultar filas de Presentación y Contenido solo en móvil */
@@ -293,9 +325,19 @@
     }
 
     &__boton {
-      padding: 0.5rem 0.5rem !important;
-      font-size: 0.74rem !important;
-      min-height: 38px !important;
+      padding: 0.35rem 0.4rem !important;
+      font-size: 0.68rem !important;
+      min-height: 32px !important;
+      border-radius: 6px !important;
+      font-weight: 600 !important;
+
+      span {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+        max-width: 100% !important;
+      }
 
       svg {
         display: none !important;

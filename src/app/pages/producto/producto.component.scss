@@ -368,3 +368,128 @@
     }
   }
 }
+
+/* ==========================================================================
+   OPTIMIZACIÓN RESPONSIVA MÓVIL (SOLO <= 767px - ESCRITORIO 100% INTACTO)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .seccion-detalle-producto {
+    padding: 1rem 0 2.25rem 0 !important;
+  }
+
+  .producto-migas {
+    margin-bottom: 0.65rem !important;
+    font-size: 0.78rem !important;
+    gap: 0.35rem !important;
+  }
+
+  .tarjeta-detalle {
+    padding: 0.95rem 0.85rem !important;
+    gap: 1.15rem !important;
+    border-radius: 14px !important;
+
+    &__col-visual {
+      gap: 0.75rem !important;
+    }
+  }
+
+  .producto-visual-caja {
+    min-height: 180px !important;
+    max-height: 190px !important;
+    padding: 0.65rem !important;
+    border-radius: 12px !important;
+
+    &__img {
+      max-height: 165px !important;
+      width: auto !important;
+      margin: 0 auto !important;
+    }
+  }
+
+  .producto-galeria-thumbs {
+    gap: 0.5rem !important;
+    padding: 0 !important;
+  }
+
+  .producto-thumb-btn {
+    width: 46px !important;
+    height: 46px !important;
+    padding: 0.2rem !important;
+    border-radius: 8px !important;
+  }
+
+  .producto-pastillas {
+    gap: 0.45rem !important;
+  }
+
+  .producto-pastilla {
+    padding: 0.45rem 0.65rem !important;
+    border-radius: 8px !important;
+
+    &--morada {
+      font-size: 0.92rem !important;
+    }
+
+    &--naranja {
+      .producto-pastilla__cant {
+        font-size: 0.92rem !important;
+      }
+
+      .producto-pastilla__sub {
+        font-size: 0.7rem !important;
+      }
+    }
+  }
+
+  .producto-laboratorio {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .producto-titulo {
+    font-size: 1.35rem !important;
+    line-height: 1.22 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .producto-ficha-info {
+    gap: 1rem !important;
+    padding-top: 0.85rem !important;
+
+    &__seccion {
+      gap: 0.45rem !important;
+    }
+
+    &__titulo {
+      font-size: 1.05rem !important;
+      margin-bottom: 0.15rem !important;
+    }
+
+    &__texto {
+      font-size: 0.86rem !important;
+      line-height: 1.45 !important;
+      gap: 0.5rem !important;
+    }
+  }
+
+  .producto-especificaciones {
+    padding: 0.85rem !important;
+    gap: 0.45rem !important;
+    border-radius: 10px !important;
+  }
+
+  .producto-especificacion {
+    font-size: 0.82rem !important;
+  }
+
+  .producto-acciones {
+    margin-top: 0.5rem !important;
+
+    .boton {
+      width: 100% !important;
+      min-height: 42px !important;
+      padding: 0.6rem 1.25rem !important;
+      font-size: 0.92rem !important;
+    }
+  }
+}

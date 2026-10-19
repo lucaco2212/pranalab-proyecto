@@ -370,5 +370,17 @@ img, svg {
   img, svg {
     max-width: 100% !important;
   }
+
+  /* Badges compactos en móvil para evitar que empujen el contenido y corten verticalmente los productos */
+  .badge-tipo {
+    font-size: 0.62rem !important;
+    padding: 0.15rem 0.45rem !important;
+    gap: 0.22rem !important;
+
+    svg {
+      width: 10px !important;
+      height: 10px !important;
+    }
+  }
 }
 
