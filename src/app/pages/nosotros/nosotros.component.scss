@@ -49,9 +49,8 @@
    ========================================================================== */
 .seccion-historia {
   padding: 5rem 0 5.5rem 0;
-  background: radial-gradient(circle at 85% 15%, rgba(74, 124, 89, 0.08) 0%, transparent 60%),
-              linear-gradient(180deg, var(--color-blanco) 0%, var(--color-gris-fondo) 100%);
-  border-bottom: 1px solid var(--color-gris-borde);
+  background: transparent;
+  border-bottom: 1px solid rgba(74, 124, 89, 0.12);
 
   @media (max-width: 600px) {
     padding: 2.75rem 0 3.5rem 0;

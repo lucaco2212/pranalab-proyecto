@@ -21,7 +21,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
         <div class="contacto-grid">
           
           <!-- Tarjeta Canal Teléfono -->
-          <div class="tarjeta contacto-canal" appReveal="fade-up" [revealDelay]="0">
+          <a href="tel:+56936264950" class="tarjeta contacto-canal" appReveal="fade-up" [revealDelay]="0">
             <div class="contacto-canal__icono">
               <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -29,13 +29,13 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
             </div>
             <div class="contacto-canal__info">
               <span class="contacto-canal__etiqueta">Teléfono Central</span>
-              <a href="tel:+56936264950" class="contacto-canal__valor">+56 9 3626 4950</a>
+              <span class="contacto-canal__valor">+56 9 3626 4950</span>
               <span class="contacto-canal__desc"><strong>Llamadas:</strong> Lunes a Viernes 09:00 a 18:00 Hrs</span>
             </div>
-          </div>
+          </a>
 
           <!-- Tarjeta Canal WhatsApp -->
-          <div class="tarjeta contacto-canal" appReveal="fade-up" [revealDelay]="100">
+          <a href="https://wa.me/56936264950" target="_blank" rel="noopener noreferrer" class="tarjeta contacto-canal" appReveal="fade-up" [revealDelay]="100">
             <div class="contacto-canal__icono contacto-canal__icono--whatsapp">
               <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
@@ -43,13 +43,16 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
             </div>
             <div class="contacto-canal__info">
               <span class="contacto-canal__etiqueta">WhatsApp Directo</span>
-              <a href="https://wa.me/56936264950" target="_blank" rel="noopener noreferrer" class="contacto-canal__valor">+56 9 3626 4950</a>
+              <span class="contacto-canal__valor">+56 9 3626 4950</span>
               <span class="contacto-canal__desc"><strong>Mensajes:</strong> Lunes a Viernes 09:00 a 18:00 Hrs</span>
             </div>
-          </div>
+          </a>
 
           <!-- Tarjeta Canal Email -->
-          <div class="tarjeta contacto-canal" appReveal="fade-up" [revealDelay]="200">
+          <div class="tarjeta contacto-canal contacto-canal--email" 
+               appReveal="fade-up" 
+               [revealDelay]="200" 
+               (click)="abrirCorreoPredeterminado($event)">
             <div class="contacto-canal__icono">
               <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -58,8 +61,32 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
             </div>
             <div class="contacto-canal__info">
               <span class="contacto-canal__etiqueta">Correo Electrónico</span>
-              <a href="mailto:acerda@biodac.cl" class="contacto-canal__valor">acerda&#64;biodac.cl</a>
+              <span class="contacto-canal__valor">acerda&#64;biodac.cl</span>
               <span class="contacto-canal__desc">Consultas sobre productos, pedidos y distribución</span>
+
+              <!-- Opciones de redacción rápida -->
+              <div class="contacto-canal__acciones" (click)="$event.stopPropagation()">
+                <a href="mailto:acerda@biodac.cl?subject=Consulta%20-%20Laboratorio%20Pranalab&body=Hola%20equipo%20de%20Pranalab,%0D%0A%0D%0AMe%20gustar%C3%ADa%20consultar%20sobre..." 
+                   class="contacto-btn-accion" 
+                   title="Abrir en tu app o gestor de correo predeterminado">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  App de Correo
+                </a>
+
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=acerda@biodac.cl&su=Consulta%20-%20Laboratorio%20Pranalab&body=Hola%20equipo%20de%20Pranalab,%0D%0A%0D%0AMe%20gustar%C3%ADa%20consultar%20sobre..." 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="contacto-btn-accion contacto-btn-accion--gmail" 
+                   title="Redactar correo directamente en Gmail Web">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                    <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+                  </svg>
+                  Redactar en Gmail
+                </a>
+              </div>
             </div>
           </div>
 
@@ -72,7 +99,8 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
     .seccion-contacto {
       position: relative;
       padding: 5rem 0 7rem 0;
-      min-height: calc(100vh - 180px);
+      min-height: calc(100vh - 108px);
+      background-color: #ffffff;
       background-image: linear-gradient(
         90deg,
         rgba(255, 255, 255, 0.94) 0%,
@@ -182,6 +210,9 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
       border: 1px solid var(--color-gris-borde);
       box-shadow: 0 8px 24px var(--color-sombra-suave);
       transition: var(--transicion-suave);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
     }
 
     @media (max-width: 600px) {
@@ -196,6 +227,10 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
       transform: translateY(-6px);
       border-color: rgba(74, 124, 89, 0.45);
       box-shadow: 0 16px 32px var(--color-sombra-firme);
+
+      .contacto-canal__valor {
+        color: var(--color-verde-salvia);
+      }
     }
 
     .contacto-canal:hover .contacto-canal__icono {
@@ -274,6 +309,49 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
       line-height: 1.45;
     }
 
+    .contacto-canal__acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+      width: 100%;
+    }
+
+    .contacto-btn-accion {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--color-verde-profundo);
+      background-color: var(--color-verde-claro);
+      border: 1px solid rgba(74, 124, 89, 0.25);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: var(--transicion-suave);
+
+      &:hover {
+        background-color: var(--color-verde-salvia);
+        color: var(--color-blanco);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(74, 124, 89, 0.2);
+      }
+    }
+
+    .contacto-btn-accion--gmail {
+      background-color: #fff1f0;
+      border-color: #ffcccc;
+      color: #d93025;
+
+      &:hover {
+        background-color: #d93025;
+        border-color: #d93025;
+        color: #ffffff;
+        box-shadow: 0 4px 10px rgba(217, 48, 37, 0.25);
+      }
+    }
+
     /* Optimización Móvil (<= 767px) */
     @media (max-width: 767px) {
       .seccion-contacto {
@@ -324,7 +402,27 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
       .contacto-canal__desc {
         font-size: 0.78rem !important;
       }
+
+      .contacto-canal__acciones {
+        margin-top: 0.65rem !important;
+        gap: 0.4rem !important;
+      }
+
+      .contacto-btn-accion {
+        padding: 0.4rem 0.75rem !important;
+        font-size: 0.78rem !important;
+      }
     }
   `]
 })
-export class ContactoComponent {}
+export class ContactoComponent {
+  abrirCorreoPredeterminado(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (target.closest('.contacto-canal__acciones')) {
+      return;
+    }
+    if (typeof window !== 'undefined') {
+      window.location.href = 'mailto:acerda@biodac.cl?subject=Consulta%20-%20Laboratorio%20Pranalab&body=Hola%20equipo%20de%20Pranalab,%0D%0A%0D%0AMe%20gustar%C3%ADa%20consultar%20sobre...';
+    }
+  }
+}

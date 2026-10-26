@@ -30,7 +30,9 @@
   --transicion-suave: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -63,14 +65,59 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--color-texto);
-  background-color: var(--color-gris-fondo);
+  min-height: 100vh;
+  position: relative;
+  background-color: #cce4dc;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+
+  /* Fondo Gradiente Aurora de Alto Rendimiento: 
+     Tonos verdes claros y pálidos (#BFDDD2 / menta) con celestes claros palo (#BCDCE6).
+     Optimizado para 60/120 FPS sin lag: transiciones suaves nativas sin 'filter: blur' ni animaciones pesadas. */
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    contain: strict;
+    background:
+      /* Destello de luz central pálida / núcleo luminoso de la aurora (rocío blanco-menta-celeste suave) */
+      radial-gradient(ellipse 70% 24% at 50% 44%, rgba(246, 255, 250, 0.75) 0%, rgba(230, 252, 246, 0.45) 30%, rgba(212, 246, 238, 0.15) 60%, transparent 80%),
+      /* Cinta ondulante horizontal de la aurora (conexión luminosa entre verde y celeste) */
+      radial-gradient(ellipse 110% 28% at 52% 47%, rgba(228, 250, 244, 0.65) 0%, rgba(198, 234, 238, 0.35) 35%, rgba(182, 224, 226, 0.12) 65%, transparent 85%),
+      /* Cresta de onda izquierda (verde menta claro y pálido) */
+      radial-gradient(ellipse 55% 36% at 16% 38%, rgba(210, 245, 230, 0.65) 0%, rgba(188, 230, 212, 0.35) 35%, rgba(178, 224, 204, 0.12) 60%, transparent 80%),
+      /* Vértice bajo / curvatura central-izquierda en celeste claro palo (#BCDCE6) */
+      radial-gradient(ellipse 52% 32% at 38% 58%, rgba(188, 218, 232, 0.65) 0%, rgba(174, 208, 224, 0.35) 35%, rgba(172, 208, 224, 0.12) 60%, transparent 80%),
+      /* Gran cresta ondulante derecha en verde salvia pálido (#BFDDD2 / #CFE6DD) */
+      radial-gradient(ellipse 62% 38% at 68% 36%, rgba(206, 236, 225, 0.70) 0%, rgba(185, 224, 208, 0.38) 35%, rgba(180, 222, 206, 0.14) 60%, transparent 80%),
+      /* Desembocadura de la onda hacia la derecha en celeste claro palo suave */
+      radial-gradient(ellipse 56% 34% at 88% 52%, rgba(194, 222, 236, 0.65) 0%, rgba(180, 212, 228, 0.35) 35%, rgba(176, 210, 228, 0.12) 60%, transparent 80%),
+      /* Bruma ambiental superior derecha en celeste claro palo (cielo nórdico pastel) */
+      radial-gradient(ellipse 75% 48% at 85% 10%, rgba(182, 215, 230, 0.50) 0%, rgba(198, 226, 238, 0.22) 45%, transparent 75%),
+      /* Bruma ambiental superior izquierda en verde pálido herbal */
+      radial-gradient(ellipse 70% 45% at 14% 12%, rgba(191, 226, 214, 0.50) 0%, rgba(205, 234, 224, 0.20) 45%, transparent 75%),
+      /* Brillo ambiental inferior izquierdo en verde menta rocío */
+      radial-gradient(ellipse 75% 50% at 12% 88%, rgba(184, 224, 208, 0.45) 0%, rgba(198, 232, 220, 0.18) 45%, transparent 75%),
+      /* Brillo ambiental inferior derecho en celeste claro palo empolvado */
+      radial-gradient(ellipse 75% 50% at 86% 88%, rgba(186, 216, 232, 0.50) 0%, rgba(200, 226, 238, 0.20) 45%, transparent 75%),
+      /* Atmósfera base aurora: degradado suave de verde claro pálido a celeste claro palo y blanco pastel */
+      linear-gradient(155deg, #cce4dc 0%, #d8ece4 25%, #d1e5ee 52%, #ddedf4 78%, #f6fbfc 100%);
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   color: var(--color-verde-profundo);
   font-weight: 700;
@@ -82,7 +129,8 @@ a {
   text-decoration: none;
 }
 
-img, svg {
+img,
+svg {
   display: block;
   max-width: 100%;
 }
@@ -118,7 +166,7 @@ img, svg {
   }
 
   &--clara {
-    background-color: var(--color-verde-claro);
+    background-color: transparent !important;
   }
 }
 
@@ -293,26 +341,46 @@ img, svg {
 }
 
 /* Retardos escalonados para listas y grids */
-.reveal-delay-100 { transition-delay: 100ms; }
-.reveal-delay-200 { transition-delay: 200ms; }
-.reveal-delay-300 { transition-delay: 300ms; }
-.reveal-delay-400 { transition-delay: 400ms; }
-.reveal-delay-500 { transition-delay: 500ms; }
+.reveal-delay-100 {
+  transition-delay: 100ms;
+}
+
+.reveal-delay-200 {
+  transition-delay: 200ms;
+}
+
+.reveal-delay-300 {
+  transition-delay: 300ms;
+}
+
+.reveal-delay-400 {
+  transition-delay: 400ms;
+}
+
+.reveal-delay-500 {
+  transition-delay: 500ms;
+}
 
 /* Micro-animaciones y Efectos Visuales */
 @keyframes floatSubtle {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-6px);
   }
 }
 
 @keyframes pulseGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(74, 124, 89, 0.35);
   }
+
   50% {
     box-shadow: 0 0 0 10px rgba(74, 124, 89, 0);
   }
@@ -322,6 +390,7 @@ img, svg {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -333,7 +402,10 @@ img, svg {
 
 /* Respeta preferencias de reducción de movimiento */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -350,7 +422,9 @@ img, svg {
    OPTIMIZACIÓN RESPONSIVA MÓVIL (SOLO <= 767px - ESCRITORIO INTACTO)
    ========================================================================== */
 @media (max-width: 767px) {
-  html, body {
+
+  html,
+  body {
     overflow-x: hidden !important;
     width: 100% !important;
     max-width: 100vw !important;
@@ -367,7 +441,8 @@ img, svg {
   }
 
   /* 11. Imágenes y seguridad anti-desbordamiento horizontal */
-  img, svg {
+  img,
+  svg {
     max-width: 100% !important;
   }
 
@@ -383,4 +458,3 @@ img, svg {
     }
   }
 }
-
