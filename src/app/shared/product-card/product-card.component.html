@@ -44,14 +44,18 @@
 
     <!-- Datos Técnicos / Especificaciones -->
     <div class="tarjeta-producto__datos-tecnicos">
-      <div class="dato-tecnico" *ngIf="producto.presentacion">
-        <span class="dato-tecnico__etiqueta">Presentación</span>
-        <span class="dato-tecnico__valor">{{ producto.presentacion }}</span>
-      </div>
-      <div class="dato-tecnico" *ngIf="producto.contenido">
-        <span class="dato-tecnico__etiqueta">Contenido</span>
-        <span class="dato-tecnico__valor">{{ producto.contenido }}</span>
-      </div>
+      @if (producto.presentacion) {
+        <div class="dato-tecnico">
+          <span class="dato-tecnico__etiqueta">Presentación</span>
+          <span class="dato-tecnico__valor">{{ producto.presentacion }}</span>
+        </div>
+      }
+      @if (producto.contenido) {
+        <div class="dato-tecnico">
+          <span class="dato-tecnico__etiqueta">Contenido</span>
+          <span class="dato-tecnico__valor">{{ producto.contenido }}</span>
+        </div>
+      }
     </div>
   </div>
 

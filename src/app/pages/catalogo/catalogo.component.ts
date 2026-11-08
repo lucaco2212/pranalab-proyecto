@@ -6,7 +6,6 @@ import {
   signal,
   computed
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductsService } from '../../core/products.service';
@@ -26,7 +25,7 @@ export interface OpcionFiltroLinea {
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [CommonModule, ProductCardComponent, RevealDirective],
+  imports: [ProductCardComponent, RevealDirective],
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.scss']
 })

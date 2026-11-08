@@ -357,15 +357,94 @@
 }
 
 .producto-acciones {
-  margin-top: 0.75rem;
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 
   .boton {
-    padding: 0.95rem 2.25rem;
-    font-size: 1rem;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.96rem;
+  }
+}
 
-    @media (max-width: 500px) {
-      width: 100%;
+/* Sección de Productos Relacionados */
+.producto-relacionados {
+  margin-top: 4rem;
+
+  &__encabezado {
+    text-align: center;
+    margin-bottom: 2.25rem;
+  }
+
+  &__subtitulo {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-acento);
+    margin-bottom: 0.35rem;
+  }
+
+  &__titulo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-verde-profundo);
+    margin: 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
     }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* Estado Producto No Encontrado */
+.producto-no-encontrado {
+  background-color: var(--color-blanco);
+  border: 1px dashed var(--color-gris-borde);
+  border-radius: 16px;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  max-width: 540px;
+  margin: 2.5rem auto;
+  box-shadow: 0 4px 16px var(--color-sombra-suave);
+
+  &__icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    background-color: var(--color-verde-claro);
+    color: var(--color-verde-salvia);
+    border-radius: 50%;
+    margin-bottom: 1.25rem;
+  }
+
+  &__titulo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-verde-profundo);
+    margin-bottom: 0.65rem;
+  }
+
+  &__texto {
+    font-size: 0.96rem;
+    color: var(--color-gris-texto);
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
   }
 }
 
@@ -484,12 +563,43 @@
 
   .producto-acciones {
     margin-top: 0.5rem !important;
+    gap: 0.55rem !important;
 
     .boton {
       width: 100% !important;
       min-height: 42px !important;
       padding: 0.6rem 1.25rem !important;
       font-size: 0.92rem !important;
+    }
+  }
+
+  .producto-relacionados {
+    margin-top: 2.25rem !important;
+
+    &__encabezado {
+      margin-bottom: 1.25rem !important;
+    }
+
+    &__titulo {
+      font-size: 1.45rem !important;
+    }
+
+    &__grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.65rem !important;
+    }
+  }
+
+  .producto-no-encontrado {
+    padding: 2.25rem 1.25rem !important;
+    margin: 1.25rem auto !important;
+
+    &__titulo {
+      font-size: 1.3rem !important;
+    }
+
+    &__texto {
+      font-size: 0.88rem !important;
     }
   }
 }

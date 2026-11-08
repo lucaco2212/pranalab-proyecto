@@ -1,138 +1,205 @@
-<div class="seccion seccion--clara seccion-detalle-producto" *ngIf="producto">
+<div class="seccion seccion--clara seccion-detalle-producto">
   <div class="contenedor">
-    
-    <!-- Navegación de migas de pan / Volver -->
-    <nav class="producto-migas" appReveal="fade-down" [revealDuration]="500">
-      <a routerLink="/catalogo" class="producto-migas__enlace">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-        <span>Volver al catálogo</span>
-      </a>
-      <span class="producto-migas__separador">/</span>
-      <span class="producto-migas__actual">{{ producto.nombre }}</span>
-    </nav>
 
-    <!-- Tarjeta Principal del Producto -->
-    <div class="tarjeta-detalle" appReveal="fade-up" [revealDuration]="700">
-      
-      <!-- COLUMNA IZQUIERDA: Imagen y Pastillas Informativas -->
-      <div class="tarjeta-detalle__col-visual">
-        <div class="producto-visual-caja">
-          <img [src]="imagenSeleccionada || producto.imagenes[0]" 
-               [alt]="producto.nombre" 
-               class="producto-visual-caja__img" />
-        </div>
+    @if (producto; as prod) {
+      <!-- Navegación de migas de pan / Volver -->
+      <nav class="producto-migas" appReveal="fade-down" [revealDuration]="500">
+        <a routerLink="/catalogo" class="producto-migas__enlace">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Volver al catálogo</span>
+        </a>
+        <span class="producto-migas__separador">/</span>
+        <span class="producto-migas__actual">{{ prod.nombre }}</span>
+      </nav>
 
-        @if (producto.imagenes && producto.imagenes.length > 1) {
-          <div class="producto-galeria-thumbs">
-            @for (img of producto.imagenes; track img; let i = $index) {
-              <button type="button" 
-                      class="producto-thumb-btn" 
-                      [class.producto-thumb-btn--activo]="(imagenSeleccionada || producto.imagenes[0]) === img"
-                      (click)="seleccionarImagen(img)"
-                      [attr.aria-label]="'Ver imagen ' + (i + 1)">
-                <img [src]="img" [alt]="producto.nombre" />
-              </button>
-            }
+      <!-- Tarjeta Principal del Producto -->
+      <div class="tarjeta-detalle" appReveal="fade-up" [revealDuration]="700">
+
+        <!-- COLUMNA IZQUIERDA: Imagen y Pastillas Informativas -->
+        <div class="tarjeta-detalle__col-visual">
+          <div class="producto-visual-caja">
+            <img [src]="imagenSeleccionada || prod.imagenes[0]"
+                 [alt]="prod.nombre"
+                 class="producto-visual-caja__img" />
           </div>
-        }
 
-        <!-- Pastillas informativas inferiores -->
-        <div class="producto-pastillas">
-          <div class="producto-pastilla producto-pastilla--morada" *ngIf="producto.principioActivo">
-            {{ producto.principioActivo }}
-          </div>
-          <div class="producto-pastilla producto-pastilla--naranja" *ngIf="producto.contenido">
-            <span class="producto-pastilla__cant">{{ producto.formaFarmaceutica }}</span>
-            <span class="producto-pastilla__sub">{{ producto.presentacion }}</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- COLUMNA DERECHA: Información, Descripción y Contenido -->
-      <div class="tarjeta-detalle__col-info">
-        
-        <!-- Laboratorio / Fabricante -->
-        <span class="producto-laboratorio">{{ producto.laboratorio || 'PRANALAB LABORATORIOS CHILE' }}</span>
-
-        <!-- Título del Producto -->
-        <h1 class="producto-titulo">{{ producto.nombre }}</h1>
-
-        <!-- BLOQUE DE INFORMACIÓN: DESCRIPCIÓN Y CONTENIDO -->
-        <div class="producto-ficha-info">
-          
-          <!-- Descripción del producto -->
-          <div class="producto-ficha-info__seccion">
-            <h2 class="producto-ficha-info__titulo">Descripción del producto</h2>
-            <div class="producto-ficha-info__texto">
-              @if (producto.descripcionParrafos && producto.descripcionParrafos.length > 0) {
-                @for (parrafo of producto.descripcionParrafos; track $index) {
-                  <p>{{ parrafo }}</p>
-                }
-              } @else {
-                <p>{{ producto.descripcionCorta }}</p>
+          @if (prod.imagenes && prod.imagenes.length > 1) {
+            <div class="producto-galeria-thumbs">
+              @for (img of prod.imagenes; track img; let i = $index) {
+                <button type="button"
+                        class="producto-thumb-btn"
+                        [class.producto-thumb-btn--activo]="(imagenSeleccionada || prod.imagenes[0]) === img"
+                        (click)="seleccionarImagen(img)"
+                        [attr.aria-label]="'Ver imagen ' + (i + 1)">
+                  <img [src]="img" [alt]="prod.nombre" />
+                </button>
               }
             </div>
+          }
+
+          <!-- Pastillas informativas inferiores -->
+          <div class="producto-pastillas">
+            @if (prod.principioActivo) {
+              <div class="producto-pastilla producto-pastilla--morada">
+                {{ prod.principioActivo }}
+              </div>
+            }
+            @if (prod.contenido) {
+              <div class="producto-pastilla producto-pastilla--naranja">
+                <span class="producto-pastilla__cant">{{ prod.formaFarmaceutica }}</span>
+                <span class="producto-pastilla__sub">{{ prod.presentacion }}</span>
+              </div>
+            }
           </div>
 
-          <!-- Contenido y Modo de Uso -->
-          <div class="producto-ficha-info__seccion">
-            <h2 class="producto-ficha-info__titulo">Contenido & Modo de Uso</h2>
-            <div class="producto-especificaciones">
-              
-              <div class="producto-especificacion" *ngIf="producto.contenido">
-                <span class="producto-especificacion__label">Contenido:</span>
-                <span class="producto-especificacion__valor">{{ producto.contenido }}</span>
-              </div>
-
-              <div class="producto-especificacion" *ngIf="producto.modoUso">
-                <span class="producto-especificacion__label">Modo de uso / Posología:</span>
-                <span class="producto-especificacion__valor">{{ producto.modoUso }}</span>
-              </div>
-
-              <div class="producto-especificacion" *ngIf="producto.composicion">
-                <span class="producto-especificacion__label">Composición:</span>
-                <span class="producto-especificacion__valor">{{ producto.composicion }}</span>
-              </div>
-
-              <div class="producto-especificacion" *ngIf="producto.almacenamiento">
-                <span class="producto-especificacion__label">Almacenamiento:</span>
-                <span class="producto-especificacion__valor">{{ producto.almacenamiento }}</span>
-              </div>
-
-              <div class="producto-especificacion" *ngIf="producto.vencimiento">
-                <span class="producto-especificacion__label">Vencimiento:</span>
-                <span class="producto-especificacion__valor">{{ producto.vencimiento }}</span>
-              </div>
-
-              <div class="producto-especificacion" *ngIf="producto.clasificacion">
-                <span class="producto-especificacion__label">Condición de venta:</span>
-                <span class="producto-especificacion__valor">
-                  {{ producto.clasificacion === 'venta-directa' ? 'Venta Directa (Sin Receta Médica)' : 'Bajo Receta Médica' }}
-                </span>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Botón de contacto -->
+          <!-- Botones de consulta contextualizados con el producto -->
           <div class="producto-acciones">
-            <a routerLink="/contacto" class="boton boton--primario">
+            <a [routerLink]="['/contacto']"
+               [queryParams]="{ producto: prod.nombre }"
+               class="boton boton--primario">
               <span>Consultar por este producto</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
+
+            <a [href]="whatsappUrl"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="boton boton--secundario">
+              <span>Consultar por WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: Información, Descripción y Contenido -->
+        <div class="tarjeta-detalle__col-info">
+
+          <!-- Laboratorio / Fabricante -->
+          <span class="producto-laboratorio">{{ prod.laboratorio || 'PRANALAB LABORATORIOS CHILE' }}</span>
+
+          <!-- Título del Producto -->
+          <h1 class="producto-titulo">{{ prod.nombre }}</h1>
+
+          <!-- BLOQUE DE INFORMACIÓN: DESCRIPCIÓN Y CONTENIDO -->
+          <div class="producto-ficha-info">
+
+            <!-- Descripción del producto -->
+            <div class="producto-ficha-info__seccion">
+              <h2 class="producto-ficha-info__titulo">Descripción del producto</h2>
+              <div class="producto-ficha-info__texto">
+                @if (prod.descripcionParrafos && prod.descripcionParrafos.length > 0) {
+                  @for (parrafo of prod.descripcionParrafos; track $index) {
+                    <p>{{ parrafo }}</p>
+                  }
+                } @else {
+                  <p>{{ prod.descripcionCorta }}</p>
+                }
+              </div>
+            </div>
+
+            <!-- Contenido y Modo de Uso -->
+            <div class="producto-ficha-info__seccion">
+              <h2 class="producto-ficha-info__titulo">Contenido &amp; Modo de Uso</h2>
+              <div class="producto-especificaciones">
+
+                @if (prod.contenido) {
+                  <div class="producto-especificacion">
+                    <span class="producto-especificacion__label">Contenido:</span>
+                    <span class="producto-especificacion__valor">{{ prod.contenido }}</span>
+                  </div>
+                }
+
+                @if (prod.modoUso) {
+                  <div class="producto-especificacion">
+                    <span class="producto-especificacion__label">Modo de uso / Posología:</span>
+                    <span class="producto-especificacion__valor">{{ prod.modoUso }}</span>
+                  </div>
+                }
+
+                @if (prod.composicion) {
+                  <div class="producto-especificacion">
+                    <span class="producto-especificacion__label">Composición:</span>
+                    <span class="producto-especificacion__valor">{{ prod.composicion }}</span>
+                  </div>
+                }
+
+                @if (prod.almacenamiento) {
+                  <div class="producto-especificacion">
+                    <span class="producto-especificacion__label">Almacenamiento:</span>
+                    <span class="producto-especificacion__valor">{{ prod.almacenamiento }}</span>
+                  </div>
+                }
+
+                @if (prod.vencimiento) {
+                  <div class="producto-especificacion">
+                    <span class="producto-especificacion__label">Vencimiento:</span>
+                    <span class="producto-especificacion__valor">{{ prod.vencimiento }}</span>
+                  </div>
+                }
+
+                @if (prod.clasificacion) {
+                  <div class="producto-especificacion">
+                    <span class="producto-especificacion__label">Condición de venta:</span>
+                    <span class="producto-especificacion__valor">
+                      {{ prod.clasificacion === 'venta-directa' ? 'Venta Directa (Sin Receta Médica)' : 'Bajo Receta Médica' }}
+                    </span>
+                  </div>
+                }
+
+              </div>
+            </div>
+
           </div>
 
         </div>
 
       </div>
 
-    </div>
+      <!-- Sección de Productos Relacionados -->
+      @if (productosRelacionados.length > 0) {
+        <section class="producto-relacionados" aria-labelledby="titulo-relacionados">
+          <div class="producto-relacionados__encabezado" appReveal="fade-up">
+            <span class="producto-relacionados__subtitulo">Sigue explorando</span>
+            <h2 id="titulo-relacionados" class="producto-relacionados__titulo">Productos relacionados</h2>
+          </div>
+
+          <div class="producto-relacionados__grid">
+            @for (rel of productosRelacionados; track rel.id; let i = $index) {
+              <div appReveal="fade-up" [revealDelay]="i * 80">
+                <app-product-card [producto]="rel"></app-product-card>
+              </div>
+            }
+          </div>
+        </section>
+      }
+    } @else {
+      <!-- Estado de Producto No Encontrado -->
+      <div class="producto-no-encontrado" appReveal="fade-up">
+        <div class="producto-no-encontrado__icono">
+          <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        </div>
+        <h1 class="producto-no-encontrado__titulo">Producto no encontrado</h1>
+        <p class="producto-no-encontrado__texto">
+          El suplemento que buscas no existe o su dirección ha cambiado. Te invitamos a revisar nuestro catálogo completo.
+        </p>
+        <a routerLink="/catalogo" class="boton boton--primario">
+          <span>Volver al catálogo</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    }
 
   </div>
 </div>

@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports: [CommonModule, RevealDirective],
+  imports: [RevealDirective],
   template: `
     <div class="seccion seccion-contacto">
       <div class="contenedor">
@@ -16,6 +17,12 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
           <p class="contacto-encabezado__subtitulo">
             Ponte en contacto con nosotros para consultar información sobre nuestros productos, resolver dudas o coordinar pedidos y distribución.
           </p>
+
+          @if (productoConsultado()) {
+            <div class="contacto-producto-tag">
+              <span>Consultando por: <strong>{{ productoConsultado() }}</strong></span>
+            </div>
+          }
         </header>
 
         <div class="contacto-grid">
@@ -35,7 +42,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
           </a>
 
           <!-- Tarjeta Canal WhatsApp -->
-          <a href="https://wa.me/56936264950" target="_blank" rel="noopener noreferrer" class="tarjeta contacto-canal" appReveal="fade-up" [revealDelay]="100">
+          <a [href]="whatsappHref()" target="_blank" rel="noopener noreferrer" class="tarjeta contacto-canal" appReveal="fade-up" [revealDelay]="100">
             <div class="contacto-canal__icono contacto-canal__icono--whatsapp">
               <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
@@ -66,7 +73,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
 
               <!-- Opciones de redacción rápida -->
               <div class="contacto-canal__acciones" (click)="$event.stopPropagation()">
-                <a href="mailto:acerda@biodac.cl?subject=Consulta%20-%20Laboratorio%20Pranalab&body=Hola%20equipo%20de%20Pranalab,%0D%0A%0D%0AMe%20gustar%C3%ADa%20consultar%20sobre..." 
+                <a [href]="mailtoHref()" 
                    class="contacto-btn-accion" 
                    title="Abrir en tu app o gestor de correo predeterminado">
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -76,7 +83,7 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
                   App de Correo
                 </a>
 
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=acerda@biodac.cl&su=Consulta%20-%20Laboratorio%20Pranalab&body=Hola%20equipo%20de%20Pranalab,%0D%0A%0D%0AMe%20gustar%C3%ADa%20consultar%20sobre..." 
+                <a [href]="gmailHref()" 
                    target="_blank" 
                    rel="noopener noreferrer" 
                    class="contacto-btn-accion contacto-btn-accion--gmail" 
@@ -169,6 +176,18 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
       font-size: 1.1rem;
       line-height: 1.6;
       margin: 0;
+    }
+
+    .contacto-producto-tag {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 1.15rem;
+      padding: 0.45rem 1rem;
+      border-radius: var(--radio-pildora);
+      background-color: var(--color-verde-claro);
+      border: 1px solid rgba(74, 124, 89, 0.35);
+      color: var(--color-verde-profundo);
+      font-size: 0.88rem;
     }
 
     @media (max-width: 600px) {
@@ -415,14 +434,60 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
     }
   `]
 })
-export class ContactoComponent {
+export class ContactoComponent implements OnInit, OnDestroy {
+  private readonly route = inject(ActivatedRoute);
+  private querySub?: Subscription;
+
+  readonly productoConsultado = signal<string>('');
+
+  readonly whatsappHref = computed(() => {
+    const prod = this.productoConsultado();
+    if (!prod) {
+      return 'https://wa.me/56936264950';
+    }
+    const texto = `Hola equipo de Pranalab, me gustaría consultar por el producto: ${prod}`;
+    return `https://wa.me/56936264950?text=${encodeURIComponent(texto)}`;
+  });
+
+  readonly mailtoHref = computed(() => {
+    const prod = this.productoConsultado();
+    const subject = prod
+      ? `Consulta por ${prod} - Laboratorio Pranalab`
+      : 'Consulta - Laboratorio Pranalab';
+    const body = prod
+      ? `Hola equipo de Pranalab,\r\n\r\nMe gustaría consultar sobre el producto "${prod}":\r\n`
+      : 'Hola equipo de Pranalab,\r\n\r\nMe gustaría consultar sobre...';
+    return `mailto:acerda@biodac.cl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+
+  readonly gmailHref = computed(() => {
+    const prod = this.productoConsultado();
+    const subject = prod
+      ? `Consulta por ${prod} - Laboratorio Pranalab`
+      : 'Consulta - Laboratorio Pranalab';
+    const body = prod
+      ? `Hola equipo de Pranalab,\r\n\r\nMe gustaría consultar sobre el producto "${prod}":\r\n`
+      : 'Hola equipo de Pranalab,\r\n\r\nMe gustaría consultar sobre...';
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=acerda@biodac.cl&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+
+  ngOnInit(): void {
+    this.querySub = this.route.queryParamMap.subscribe(params => {
+      this.productoConsultado.set((params.get('producto') || '').trim());
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.querySub?.unsubscribe();
+  }
+
   abrirCorreoPredeterminado(event: MouseEvent): void {
     const target = event.target as HTMLElement;
     if (target.closest('.contacto-canal__acciones')) {
       return;
     }
     if (typeof window !== 'undefined') {
-      window.location.href = 'mailto:acerda@biodac.cl?subject=Consulta%20-%20Laboratorio%20Pranalab&body=Hola%20equipo%20de%20Pranalab,%0D%0A%0D%0AMe%20gustar%C3%ADa%20consultar%20sobre...';
+      window.location.href = this.mailtoHref();
     }
   }
 }

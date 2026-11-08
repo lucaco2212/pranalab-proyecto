@@ -1,10 +1,10 @@
 import { Component, HostListener, Inject, PLATFORM_ID, signal } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-scroll-top',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <button
       type="button"
@@ -44,11 +44,11 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
                   visibility 0.35s,
                   background-color 0.2s;
 
-      @media (max-width: 600px) {
-        bottom: 1.25rem;
-        right: 1.25rem;
-        width: 40px;
-        height: 40px;
+      @media (max-width: 767px) {
+        bottom: 5.5rem;
+        right: 26px;
+        width: 44px;
+        height: 44px;
       }
     }
 

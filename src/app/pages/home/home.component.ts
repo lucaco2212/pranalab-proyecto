@@ -1,6 +1,6 @@
 import { Component, inject, signal, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { ProductsService } from '../../core/products.service';
 import { ProductCardComponent } from '../../shared/product-card/product-card.component';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
@@ -8,6 +8,7 @@ import { Product } from '../../core/models/product.model';
 
 export interface RecomendacionItem {
   id: number;
+  slug: string;
   nombre: string;
   subtitulo: string;
   imagen: string;
@@ -17,7 +18,7 @@ export interface RecomendacionItem {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, ProductCardComponent, RevealDirective],
+  imports: [RouterLink, ProductCardComponent, RevealDirective],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   readonly recomendaciones: RecomendacionItem[] = [
     {
       id: 2,
+      slug: this.productsService.getById(2)?.slug ?? '',
       nombre: 'Bisglicinato de Magnesio 400 mg',
       subtitulo: 'Alta biodisponibilidad y tolerancia digestiva para el confort muscular, relajación y descanso reparador.',
       imagen: '/assets/images/products/bisglicinato-de-magnesio-400mg.jpg',
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       id: 7,
+      slug: this.productsService.getById(7)?.slug ?? '',
       nombre: 'Colágeno Plus + (Biotina - Vitamina C)',
       subtitulo: 'Fórmula integral con Vitamina C y Biotina para estimular la producción de colágeno, nutrición dérmica y cuidado articular.',
       imagen: '/assets/images/products/colageno-plus-biotina-vitamina-c.png',
@@ -49,6 +52,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       id: 22,
+      slug: this.productsService.getById(22)?.slug ?? '',
       nombre: 'Minilab Multivitamínico Jarabe 125 ml',
       subtitulo: 'Fórmula líquida multivitamínica de fácil absorción con delicioso sabor frambuesa-miel para apoyar el crecimiento y vitalidad.',
       imagen: '/assets/images/products/minilab-multivitaminico-jarabe.jpg',
@@ -56,6 +60,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       id: 34,
+      slug: this.productsService.getById(34)?.slug ?? '',
       nombre: 'Vitamina C + Zinc',
       subtitulo: 'Sinergia antioxidante de alta potencia para reforzar el sistema inmune, defensas celulares y síntesis de colágeno.',
       imagen: '/assets/images/products/vitamina-c-zinc-60-capsulas.png',
@@ -63,6 +68,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       id: 9,
+      slug: this.productsService.getById(9)?.slug ?? '',
       nombre: 'Complejo B Multivitamínico',
       subtitulo: '8 vitaminas esenciales del grupo B para activar el metabolismo energético, defensas inmunes y equilibrio del sistema nervioso.',
       imagen: '/assets/images/products/complejo-b-multivitaminico.jpg',
@@ -70,6 +76,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       id: 3,
+      slug: this.productsService.getById(3)?.slug ?? '',
       nombre: 'Calciolab Vitamina D3 800 UI',
       subtitulo: 'Formulación sinérgica para el fortalecimiento óseo, dental y el correcto soporte musculoesquelético.',
       imagen: '/assets/images/products/calciolab-calcio-vitamina-d3.jpg',

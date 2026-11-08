@@ -1495,9 +1495,13 @@ export class ProductsService {
   }
 
   getRelacionados(product: Product): Product[] {
-    return this.products
-      .filter(p => p.id !== product.id && (p.categoria === product.categoria || p.formaFarmaceutica === product.formaFarmaceutica))
-      .slice(0, 3);
+    const mismaCategoria = this.products.filter(
+      p => p.id !== product.id && p.categoria === product.categoria
+    );
+    const mismaForma = this.products.filter(
+      p => p.id !== product.id && p.categoria !== product.categoria && p.formaFarmaceutica === product.formaFarmaceutica
+    );
+    return [...mismaCategoria, ...mismaForma].slice(0, 3);
   }
 
   getDestacados(): Product[] {
